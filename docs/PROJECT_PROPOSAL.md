@@ -45,7 +45,7 @@ The current backend seeds 12 directions: ALA→NQZ, NQZ→ALA, ALA→CIT, ALA→
 
 These are candidate monitoring directions, not a verified coverage claim. Retain a final set of 10–15 only after the data pilot; record unavailable combinations rather than inventing offers. Current collector parameters are one-way and KZT, with one selected departure date per run and a 1–60-day horizon. The monitoring design should support repeated observations of fixed departure dates as well as explicitly labeled rolling horizons.
 
-Android is the initial mobile target; Flutter/Dart is planned. The title does not promise an iOS release.
+Android is the initial mobile target; Flutter/Dart is selected and a Web demo is available in `mobile/`. The title does not promise an iOS release.
 
 Outside scope: booking/payment, complete flight inventory, guaranteed coverage of all carriers/fare families, real-time repricing, and guaranteed advice about the best purchase date.
 
@@ -62,7 +62,7 @@ Outside scope: booking/payment, complete flight inventory, guaranteed coverage o
 
 Published code contains FastAPI endpoints, PostgreSQL configuration, ORM models, a 12-direction seed list, collection scaffolding, and median/linear assessment. An offline review exercised the API with temporary SQLite and mocked provider responses.
 
-This is a backend prototype. Missing/error API responses currently fall back to unmarked generated quotes; source-time mapping and UTC conversion are incorrect. These defects must be corrected before a real collection pilot or an ML dataset can be trusted. Actual push delivery, mobile source, a scheduler, and validated prediction performance are not established.
+This is a backend prototype. Missing/error API responses currently fall back to unmarked generated quotes; source-time mapping and UTC conversion are incorrect. These defects must be corrected before a real collection pilot or an ML dataset can be trusted. Flutter/Dart source and a Web demo are available, with explicitly synthetic fixtures. Actual push delivery, native builds, a scheduler, backend integration and validated prediction performance are not established.
 
 ## Evaluation approach
 

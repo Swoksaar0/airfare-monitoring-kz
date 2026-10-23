@@ -1,4 +1,6 @@
-# Clickable mobile-interface prototype
+# Earlier browser UI reference
+
+The primary application prototype is now [Flutter/Dart](../../mobile/README.md). This HTML sketch is retained only as an optional visual reference.
 
 **Status:** first reviewable prototype, 23 October 2026. User and supervisor evaluation are pending.  
 **Related issue:** [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).

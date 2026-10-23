@@ -9,7 +9,7 @@
 
 Editable source: [system-context.puml](diagrams/system-context.puml).
 
-The product boundary includes the intended mobile application and supporting backend. Travelers use the mobile client; an operator controls collection. External source access and push delivery are dependencies. The mobile client and push provider integration are planned, while backend source and database configuration exist.
+The product boundary includes the intended mobile application and supporting backend. Travelers use the mobile client; an operator controls collection. External source access and push delivery are dependencies. A Flutter/Dart demo client now exists under `mobile/`; production backend integration, native builds and push delivery remain unverified. The diagrams' planned mobile labels describe the intended production integration; the demo is not that completed integration.
 
 ## Use Case Diagram
 
@@ -27,7 +27,7 @@ Editable source: [components.puml](diagrams/components.puml).
 
 | Component | Responsibility | Current state |
 | --- | --- | --- |
-| Mobile client | Route/date input, history/assessment presentation, tracking UI | Planned |
+| Mobile client | Route/history/assessment presentation and local demo threshold | Flutter Web demo available; date picker, native builds and production integration pending |
 | FastAPI | API routing, validation and persistence access | Published prototype |
 | Collector | Provider request, normalization, snapshot write, threshold checks | Published prototype with data-trust defects |
 | Analytics | Median and linear assessment | Published baseline, not validated prediction |

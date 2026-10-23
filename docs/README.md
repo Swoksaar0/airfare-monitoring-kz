@@ -10,8 +10,10 @@ Prepared on 23 October 2026 for the 24 October checkpoint. All documents are dra
 | Verification and evaluation plan | [VERIFICATION_PLAN.md](VERIFICATION_PLAN.md) | [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
 | Milestones, risks, and dependencies | [PROJECT_PLAN.md](PROJECT_PLAN.md) | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | User discussion protocol and evidence template | [USER_DISCUSSIONS.md](USER_DISCUSSIONS.md) | [#2](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/2) |
-| Clickable mobile-interface prototype and screen exports | [prototype/README.md](prototype/README.md) | [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
+| Primary Flutter/Dart prototype | [mobile/README.md](../mobile/README.md) | [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
 | Supervisor feedback record template | [SUPERVISOR_FEEDBACK.md](SUPERVISOR_FEEDBACK.md) | [#15](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/15) |
+
+Earlier optional HTML visual reference: [prototype/README.md](prototype/README.md). The application framework remains Flutter/Dart.
 
 ## Remaining checkpoint evidence
 
