@@ -4,6 +4,8 @@ Prepared on 23 October 2026 for the 24 October checkpoint. All documents are dra
 
 | Material | File | Related issue |
 | --- | --- | --- |
+| Existing services: 3 systems × 8 criteria | [EXISTING_SYSTEMS.md](EXISTING_SYSTEMS.md) | [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
+| Technology choices: 3 decisions × 3 candidates | [TECHNOLOGY_COMPARISON.md](TECHNOLOGY_COMPARISON.md) | [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
 | Proposal and scope | [PROJECT_PROPOSAL.md](PROJECT_PROPOSAL.md) | [#1](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/1) |
 | Functional/non-functional requirements | [REQUIREMENTS.md](REQUIREMENTS.md) | [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Architecture and required diagrams | [ARCHITECTURE.md](ARCHITECTURE.md) | [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5), [#12](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/12) |
@@ -19,8 +21,8 @@ Earlier optional HTML visual reference: [prototype/README.md](prototype/README.m
 
 - Conduct and record 3–5 real discussions with potential users, or obtain substantive agreement with a real client.
 - Analyze at least 12 distinct sources including at least 8 scientific publications; combine both students' contributions into a critical review and analysis table.
-- Compare 3–5 existing systems using 6–10 consistent, evidenced criteria.
-- Compare 2–3 alternatives for each of at least three key technology decisions.
+- Review the documented 3-system, 8-criterion comparison; record peer comments and verify coverage separately in the pilot.
+- Review the three technology decisions and their three candidates each; record agreement and implementation implications.
 - Review the clickable prototype with both students and real users, record findings, and revise the scenarios.
 - Obtain actual supervisor comments and record actions.
 - Review the drafts, link artifacts to tasks, provide repository access, and identify the agreed submission revision with `pre-defense-1`.

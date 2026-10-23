@@ -28,7 +28,7 @@ The project investigates how repeated observations of domestic airfare quotes ca
 
 The intended users are people who plan flights within Kazakhstan and want to review the available price history, understand when a quote was collected, and set a price threshold for tracking.
 
-The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. Interview findings, comparisons with existing services, and literature-review results have not yet been published. The project does not claim that all existing booking services lack these capabilities.
+The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings and the scientific literature review remain outstanding. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
 
 ## Aim and objectives
 
@@ -376,7 +376,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | --- | --- |
 | Proposal and scope | Initial overview in this README; full reviewed proposal pending in [#1](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/1) |
 | Evidence of relevance | 3–5 real user discussions pending in [#2](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/2) |
-| Existing-system comparison | 3–5 systems and 6–10 criteria; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
+| Existing-system comparison | [Draft: 3 systems × 8 criteria](docs/EXISTING_SYSTEMS.md), awaiting review; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
 | Clickable prototype | [Flutter demo](mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
@@ -384,7 +384,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
 | Collection and storage documentation | [#10](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/10) |
-| Technology comparison | At least 3 decisions with 2–3 alternatives each; [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
+| Technology comparison | [Draft: 3 decisions × 3 candidates](docs/TECHNOLOGY_COMPARISON.md), awaiting review; [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
 | Context and Component Diagrams | Editable sources and exports; [#12](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/12) |
 | Verification/evaluation plan | Metrics, conditions, checks, and baseline; [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
 | Supervisor feedback | Actual comments and actions; [#15](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/15) |
