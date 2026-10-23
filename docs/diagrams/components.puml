@@ -1,0 +1,23 @@
+@startuml
+title Component Diagram — draft, 23 October 2026
+left to right direction
+component "Mobile client\nPlanned" as Mobile
+component "FastAPI\nPublished prototype" as API
+component "Collector\nPublished; correctness gaps" as Collector
+component "Analytics\nMedian / linear baseline" as Analytics
+database "PostgreSQL\nModels + Compose; deployment unverified" as DB
+cloud "External airfare source\nLive access/coverage unverified" as Source
+component "Scheduler\nPlanned" as Scheduler
+component "Push adapter/provider\nPlanned; no delivery implemented" as Push
+Mobile --> API : HTTP
+API --> Collector : manual collection
+API --> Analytics : assessment
+API --> DB : routes/history/rules
+Collector --> Source : request/response
+Collector --> DB : observations + alert state
+Analytics --> DB : history
+Scheduler ..> Collector : repeat runs (planned)
+Collector ..> Push : qualifying observation (planned)
+Push ..> Mobile : notification (planned)
+note bottom of Collector : Current fallback invents quotes; source timestamps require correction
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+title System Context — draft, 23 October 2026
+left to right direction
+actor Traveler
+actor Operator
+rectangle "Airfare Monitoring KZ\nMobile client + supporting backend\nBackend prototype exists; mobile planned" as System
+cloud "External airfare source\nAccess/coverage unverified" as Source
+cloud "Push delivery provider\nPlanned integration" as Push
+Traveler --> System : select route/date; inspect history; track
+Operator --> System : controlled collection; inspect failures
+System --> Source : bounded quote requests
+Source --> System : quotes / missing data / errors
+System --> Push : delivery requests (planned)
+Push --> Traveler : notifications (planned)
+@enduml

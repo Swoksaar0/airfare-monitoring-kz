@@ -12,6 +12,8 @@ Development of a mobile application for monitoring and analyzing airfare dynamic
 
 ## Project links
 
+- [Checkpoint documentation drafts and diagrams](docs/README.md)
+
 - [Repository](https://github.com/Swoksaar0/airfare-monitoring-kz)
 - [GitHub Projects board](https://github.com/users/Swoksaar0/projects/2/views/1)
 - [All project issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues)
@@ -214,7 +216,7 @@ airfare-monitoring-kz/
 
 At the time of review, `.gitignore` is empty and `backend/.env` is tracked. Configuration hygiene needs an update: provide an `.env.example`, ignore local `.env` files and virtual environments, and keep real credentials out of Git history.
 
-The folders `docs/`, `mobile/`, and `tests/` are not yet published. They are planned deliverables rather than existing implementation.
+The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, and evidence templates. They require peer/supervisor review. The folders `mobile/` and `tests/` are not yet published.
 
 ## Running the backend locally
 
