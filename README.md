@@ -10,6 +10,17 @@ Development of a mobile application for monitoring and analyzing airfare dynamic
 
 **Current stage:** backend prototype, a Flutter/Dart demo client, and initial project planning. A complete mobile application and a validated airfare prediction model are not yet available in this repository.
 
+## Branches and ownership
+
+| Branch | Purpose | Main owner |
+| --- | --- | --- |
+| [main](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/main) | Shared integration base; accepted changes arrive through reviewed PRs | Both students |
+| [backend](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/backend) | Server, collection, database and analytics work under `backend/`; starts from the current main baseline | Bekbauly |
+| [mobile-app](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app) | Flutter client, its tests and launch instructions under `mobile/` | Dinmukhammed |
+| [pre-defense-documents](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/pre-defense-documents) | Checkpoint research, requirements, diagrams and submission materials under `docs/`, plus this overview | Both students |
+
+Branches retain the shared project baseline. An unchanged backend visible in another branch is normal; each PR isolates changes for one work area. This documentation branch does not contain the Flutter folder: follow the mobile-app link below for the source and demo instructions. See [branch workflow](docs/BRANCH_WORKFLOW.md). Review scopes: [documentation #18](https://github.com/Swoksaar0/airfare-monitoring-kz/pull/18) and [Flutter #19](https://github.com/Swoksaar0/airfare-monitoring-kz/pull/19).
+
 ## Project links
 
 - [Checkpoint documentation drafts and diagrams](docs/README.md)
@@ -19,7 +30,7 @@ Development of a mobile application for monitoring and analyzing airfare dynamic
 - [All project issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues)
 - [Dinmukhammed's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ASwoksaar0)
 - [Bekbauly's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ABekbauly)
-- [Primary Flutter/Dart prototype and launch instructions](mobile/README.md) — explicit demo mode; [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
+- [Primary Flutter/Dart prototype and launch instructions](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) — explicit demo mode; [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
 - [Earlier browser UI reference](docs/prototype/README.md) — optional visual sketch.
 
 ## Problem, target users, and relevance
@@ -97,9 +108,9 @@ Status reflects the published backend inspected on **23 October 2026**.
 | Alert handling | Partial | Threshold checks and notification-state updates exist; actual push delivery is absent |
 | Scheduled collection | Not implemented | Collection is invoked through an API endpoint |
 | SCAT parser integration | Not present in this repository | The published collector does not call a SCAT parser |
-| Mobile application and clickable prototype | Flutter demo available; native builds/integration unverified | [Flutter source, tests and launch instructions](mobile/README.md); earlier HTML sketch retained as a visual reference |
-| Automated tests and CI | Two Flutter checks available; backend regression suite/CI pending | [Flutter checks](mobile/README.md); backend diagnostic review below |
-| Requirements, research, and architecture documents | Pending | Tracked in the linked issues |
+| Mobile application and clickable prototype | Flutter demo available; native builds/integration unverified | [Flutter source, tests and launch instructions](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); earlier HTML sketch retained as a visual reference |
+| Automated tests and CI | Two Flutter checks available; backend regression suite/CI pending | [Flutter checks](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); backend diagnostic review below |
+| Requirements, research, and architecture documents | Drafts available | See the documentation index; student/supervisor review and real user evidence remain pending |
 
 ## Data-source limitations that affect the current prototype
 
@@ -192,14 +203,13 @@ Current limitations include floating-point money fields, no observation identity
 
 The dependency file currently does not pin versions. A reproducible dependency set and a comparison of alternatives for at least three technical decisions remain to be completed in [issue #11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11).
 
-## Published repository structure
+## Structure in this documentation branch
 
 ```text
 airfare-monitoring-kz/
 ├── .gitignore
 ├── README.md
 ├── docs/                    # Checkpoint drafts, diagrams and earlier HTML reference
-├── mobile/                  # Flutter/Dart demo, Web launcher and two checks
 └── backend/
     ├── .env
     ├── docker-compose.yml
@@ -219,7 +229,7 @@ airfare-monitoring-kz/
 
 At the time of review, `.gitignore` is empty and `backend/.env` is tracked. Configuration hygiene needs an update: provide an `.env.example`, ignore local `.env` files and virtual environments, and keep real credentials out of Git history.
 
-The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The `mobile/` directory contains the Flutter/Dart client, Web launcher and `mobile/test/` checks. Backend automated tests and native platform launch folders remain outstanding.
+The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The Flutter/Dart client, Web launcher and `mobile/test/` checks are kept in the separate [mobile-app branch](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app/mobile). Backend automated tests and native platform launch folders remain outstanding.
 
 ## Running the backend locally
 
@@ -288,7 +298,7 @@ The application connects to the database during module import and creates tables
 - [OpenAPI schema](http://127.0.0.1:8000/openapi.json)
 - [Health check](http://127.0.0.1:8000/health)
 
-See [mobile/README.md](mobile/README.md) for Flutter demo launch, verification commands and limitations. This mode uses synthetic client-only data without calling the backend or airfare providers.
+See [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) for Flutter demo launch, verification commands and limitations. This mode uses synthetic client-only data without calling the backend or airfare providers.
 
 ## API endpoints
 
@@ -307,7 +317,7 @@ The history response currently omits `flight_number`, although the database mode
 
 ## Verification and testing
 
-There is no committed backend automated test suite or CI workflow yet; the Flutter prototype has two checks documented in [mobile/README.md](mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
+There is no committed backend automated test suite or CI workflow yet; the Flutter prototype has two checks documented in [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
 
 ### Backend review performed on 23 October 2026
 
@@ -379,7 +389,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | Existing-system comparison | [Draft: 3 systems × 8 criteria](docs/EXISTING_SYSTEMS.md), awaiting review; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
-| Clickable prototype | [Flutter demo](mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
+| Clickable prototype | [Flutter demo](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
 | Literature review | [Draft: 13 sources including 9 scholarly publications](docs/LITERATURE_REVIEW.md), awaiting student/supervisor review; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
