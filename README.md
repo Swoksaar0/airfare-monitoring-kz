@@ -19,7 +19,7 @@ Development of a mobile application for monitoring and analyzing airfare dynamic
 - [All project issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues)
 - [Dinmukhammed's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ASwoksaar0)
 - [Bekbauly's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ABekbauly)
-- Prototype: not published yet; tracked in [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
+- [Clickable interface prototype, launch instructions and screen exports](docs/prototype/README.md) — synthetic data; [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
 
 ## Problem, target users, and relevance
 
@@ -96,7 +96,7 @@ Status reflects the published backend inspected on **23 October 2026**.
 | Alert handling | Partial | Threshold checks and notification-state updates exist; actual push delivery is absent |
 | Scheduled collection | Not implemented | Collection is invoked through an API endpoint |
 | SCAT parser integration | Not present in this repository | The published collector does not call a SCAT parser |
-| Mobile application and clickable prototype | Not published | No `mobile/` directory or prototype link |
+| Mobile application and clickable prototype | Browser prototype available; native client planned | [Prototype source and exports](docs/prototype/README.md); no Flutter `mobile/` directory |
 | Automated tests and CI | Not published | Manual checks are described below |
 | Requirements, research, and architecture documents | Pending | Tracked in the linked issues |
 
@@ -197,6 +197,7 @@ The dependency file currently does not pin versions. A reproducible dependency s
 airfare-monitoring-kz/
 ├── .gitignore
 ├── README.md
+├── docs/                    # Checkpoint drafts, diagrams and clickable prototype
 └── backend/
     ├── .env
     ├── docker-compose.yml
@@ -216,7 +217,7 @@ airfare-monitoring-kz/
 
 At the time of review, `.gitignore` is empty and `backend/.env` is tracked. Configuration hygiene needs an update: provide an `.env.example`, ignore local `.env` files and virtual environments, and keep real credentials out of Git history.
 
-The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, and evidence templates. They require peer/supervisor review. The folders `mobile/` and `tests/` are not yet published.
+The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The folders `mobile/` and `tests/` are not yet published.
 
 ## Running the backend locally
 
@@ -376,7 +377,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | Existing-system comparison | 3–5 systems and 6–10 criteria; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
-| Clickable prototype | Main scenarios and error states; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
+| Clickable prototype | [Browser prototype and screen exports](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
 | Literature review | At least 12 distinct sources including 8 scientific publications; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
