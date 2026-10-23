@@ -24,40 +24,12 @@ Existing commercial aggregators are designed for immediate booking rather than l
 
 ---
 
-## Team & Responsibilities
+## 👥 Team & Responsibilities
 
-| Contributor | Role & Domain Ownership | YouTrack Tasks |
-| --- | --- | --- |
-| **Galymzhan Bekbauly** | **Backend, Data Engineering & ML**<br>
-
-<br>• Relational PostgreSQL schema and SQLAlchemy models<br>
-
-<br>• RESTful API service built with FastAPI<br>
-
-<br>• Data ingestion pipeline with cache-age filtering<br>
-
-<br>• Mathematical baseline engine (historical median & linear regression) | `KZF-1`<br>
-
-<br>`KZF-2`<br>
-
-<br>`KZF-3`<br>
-
-<br>`KZF-4` |
-| **Dinmukhammed Yessenkhosov** | **Mobile, UI/UX & Alerts System**<br>
-
-<br>• Cross-platform mobile client built with Flutter (Dart)<br>
-
-<br>• Interactive price history chart views (`fl_chart`)<br>
-
-<br>• "Favorites" routes management module<br>
-
-<br>• Threshold checking and alert deduplication service | `KZF-5`<br>
-
-<br>`KZF-6`<br>
-
-<br>`KZF-7`<br>
-
-<br>`KZF-8` |
+| Contributor | Role & Domain Ownership | Key Responsibilities |
+| :--- | :--- | :--- |
+| **Galymzhan Bekbauly** | Backend, Data Engineering & ML | • Relational PostgreSQL schema & SQLAlchemy models<br>• RESTful API service built with FastAPI<br>• Data ingestion pipeline with cache-age filtering<br>• Mathematical baseline engine (median & linear trend) |
+| **Dinmukhammed Yessenkhosov** | Mobile, UI/UX & Alerts System | • Cross-platform mobile client built with Flutter (Dart)<br>• Interactive price history chart views (`fl_chart`)<br>• "Favorites" routes management module<br>• Threshold checking & alert deduplication service |
 
 **Academic Supervisor:** Senior Lecturer Arailym Zhanbolatkyzy Orazova.
 
