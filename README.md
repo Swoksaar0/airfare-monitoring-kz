@@ -132,24 +132,17 @@ kz-flights-monitor/
 ### 1. Backend & Database Setup
 
 ```bash
-# Navigate to the backend directory
 cd backend
 
-# Launch containerized PostgreSQL 16 (port 5433)
 docker compose up -d
 
-# Create and activate virtual environment
 python -m venv .venv
-# On Windows:
 .\.venv\Scripts\activate
-# On Linux/macOS:
 source .venv/bin/activate
 
-# Install dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Start FastAPI server with live reload
 uvicorn app.main:app --reload
 
 ```
@@ -162,13 +155,10 @@ Server endpoints will be available at:
 ### 2. Mobile Client Setup
 
 ```bash
-# Navigate to the mobile directory
 cd mobile
 
-# Fetch Flutter dependencies
 flutter pub get
 
-# Run application on connected device, emulator, or desktop
 flutter run
 
 ```
