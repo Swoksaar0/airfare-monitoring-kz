@@ -38,6 +38,8 @@ After source-time and real/simulated separation fixes, agree a small request bud
 
 ## Statistical/ML evaluation
 
+The [literature review](LITERATURE_REVIEW.md) explains the rationale: P3 addresses forecast evaluation/leakage, P4 motivates simple comparators, and D1/D2 clarify cached-source limitations. These support the proposed protocol; they do not establish achieved accuracy.
+
 - Begin with a last-observed-price or prior-history-median baseline and document its grouping.
 - Compare the linear baseline and any later ML candidate on the same chronological split.
 - Features and baselines use only information available before each assessed observation.

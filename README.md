@@ -28,7 +28,7 @@ The project investigates how repeated observations of domestic airfare quotes ca
 
 The intended users are people who plan flights within Kazakhstan and want to review the available price history, understand when a quote was collected, and set a price threshold for tracking.
 
-The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings and the scientific literature review remain outstanding. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
+The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings remain outstanding. A [critical literature review](docs/LITERATURE_REVIEW.md) now analyzes 13 sources, including 9 scholarly publications, with access limits and proposed student review responsibilities. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
 
 ## Aim and objectives
 
@@ -307,7 +307,7 @@ The history response currently omits `flight_number`, although the database mode
 
 ## Verification and testing
 
-There is no committed automated test suite or CI workflow yet. Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
+There is no committed backend automated test suite or CI workflow yet; the Flutter prototype has two checks documented in [mobile/README.md](mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
 
 ### Backend review performed on 23 October 2026
 
@@ -380,7 +380,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
 | Clickable prototype | [Flutter demo](mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
-| Literature review | At least 12 distinct sources including 8 scientific publications; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
+| Literature review | [Draft: 13 sources including 9 scholarly publications](docs/LITERATURE_REVIEW.md), awaiting student/supervisor review; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
 | Collection and storage documentation | [#10](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/10) |

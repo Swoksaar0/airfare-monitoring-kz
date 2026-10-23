@@ -4,6 +4,7 @@ Prepared on 23 October 2026 for the 24 October checkpoint. All documents are dra
 
 | Material | File | Related issue |
 | --- | --- | --- |
+| Critical literature review: 13 sources, 9 scholarly publications | [LITERATURE_REVIEW.md](LITERATURE_REVIEW.md) | [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7), [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Existing services: 3 systems × 8 criteria | [EXISTING_SYSTEMS.md](EXISTING_SYSTEMS.md) | [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
 | Technology choices: 3 decisions × 3 candidates | [TECHNOLOGY_COMPARISON.md](TECHNOLOGY_COMPARISON.md) | [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
 | Proposal and scope | [PROJECT_PROPOSAL.md](PROJECT_PROPOSAL.md) | [#1](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/1) |
@@ -20,11 +21,11 @@ Earlier optional HTML visual reference: [prototype/README.md](prototype/README.m
 ## Remaining checkpoint evidence
 
 - Conduct and record 3–5 real discussions with potential users, or obtain substantive agreement with a real client.
-- Analyze at least 12 distinct sources including at least 8 scientific publications; combine both students' contributions into a critical review and analysis table.
+- Review the 13-source literature draft (9 scholarly publications and 4 technical documents); verify the limited-access entries, individual reading notes, analysis and proposed allocation between students.
 - Review the documented 3-system, 8-criterion comparison; record peer comments and verify coverage separately in the pilot.
 - Review the three technology decisions and their three candidates each; record agreement and implementation implications.
 - Review the clickable prototype with both students and real users, record findings, and revise the scenarios.
 - Obtain actual supervisor comments and record actions.
 - Review the drafts, link artifacts to tasks, provide repository access, and identify the agreed submission revision with `pre-defense-1`.
 
-No interviews, supervisor approvals, literature findings, native mobile implementation, or final acceptance are claimed by these drafts.
+The review contains attributed literature findings and proposed project inferences. No completed interviews, supervisor approvals, native-device verification, student reading/peer review, or final acceptance are claimed.
