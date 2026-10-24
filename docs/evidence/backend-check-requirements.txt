@@ -1,0 +1,8 @@
+fastapi==0.161.1
+sqlalchemy==2.1.6
+httpx==0.28.1
+pydantic==2.14.1
+pydantic-settings==2.16.1
+starlette==1.9.0
+anyio==4.15.1
+psycopg2-binary==2.9.13

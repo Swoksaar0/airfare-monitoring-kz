@@ -8,16 +8,30 @@ Development of a mobile application for monitoring and analyzing airfare dynamic
 - **Русский:** Разработка мобильного приложения для мониторинга и анализа динамики цен на авиабилеты по внутренним маршрутам Казахстана.
 - **Қазақша:** Қазақстанның ішкі әуе бағыттары бойынша авиабилеттер бағасының динамикасын бақылауға және талдауға арналған мобильді қосымшаны әзірлеу.
 
-**Current stage:** backend prototype and initial project planning. A complete mobile application and a validated airfare prediction model are not yet available in this repository.
+**Current stage:** backend prototype, a Flutter/Dart demo client, and initial project planning. A complete mobile application and a validated airfare prediction model are not yet available in this repository.
+
+## Branches and ownership
+
+| Branch | Purpose | Main owner |
+| --- | --- | --- |
+| [main](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/main) | Shared integration base; accepted changes arrive through reviewed PRs | Both students |
+| [backend](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/backend) | Server, collection, database and analytics work under `backend/`; starts from the current main baseline | Bekbauly |
+| [mobile-app](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app) | Flutter client, its tests and launch instructions under `mobile/` | Dinmukhammed |
+| [pre-defense-documents](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/pre-defense-documents) | Checkpoint research, requirements, diagrams and submission materials under `docs/`, plus this overview | Both students |
+
+Branches retain the shared project baseline. An unchanged backend visible in another branch is normal; each PR isolates changes for one work area. This documentation branch does not contain the Flutter folder: follow the mobile-app link below for the source and demo instructions. See [branch workflow](docs/BRANCH_WORKFLOW.md). Review scopes: [documentation #18](https://github.com/Swoksaar0/airfare-monitoring-kz/pull/18) and [Flutter #19](https://github.com/Swoksaar0/airfare-monitoring-kz/pull/19).
 
 ## Project links
+
+- [Checkpoint documentation drafts and diagrams](docs/README.md)
 
 - [Repository](https://github.com/Swoksaar0/airfare-monitoring-kz)
 - [GitHub Projects board](https://github.com/users/Swoksaar0/projects/2/views/1)
 - [All project issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues)
 - [Dinmukhammed's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ASwoksaar0)
 - [Bekbauly's issues](https://github.com/Swoksaar0/airfare-monitoring-kz/issues?q=is%3Aissue+assignee%3ABekbauly)
-- Prototype: not published yet; tracked in [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
+- [Primary Flutter/Dart prototype and launch instructions](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) — explicit demo mode; [issue #6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6).
+- [Earlier browser UI reference](docs/prototype/README.md) — optional visual sketch.
 
 ## Problem, target users, and relevance
 
@@ -25,7 +39,7 @@ The project investigates how repeated observations of domestic airfare quotes ca
 
 The intended users are people who plan flights within Kazakhstan and want to review the available price history, understand when a quote was collected, and set a price threshold for tracking.
 
-The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. Interview findings, comparisons with existing services, and literature-review results have not yet been published. The project does not claim that all existing booking services lack these capabilities.
+The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings remain outstanding. A [critical literature review](docs/LITERATURE_REVIEW.md) now analyzes 14 sources, including 10 scholarly publications, with access limits and proposed student review responsibilities. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
 
 ## Aim and objectives
 
@@ -68,7 +82,7 @@ Both students contribute to architecture, integration, verification, documentati
 - One-way searches and prices in KZT in the current collector.
 - Price history grouped by route **and departure date**.
 - Explicit presentation of unknown values, missing observations, errors, and data freshness.
-- Android as the initial mobile target; Flutter/Dart is the planned implementation technology.
+- Android as the initial mobile target; Flutter/Dart is the selected implementation technology, with a Web demo now available.
 - Statistical assessment before any claim of a useful predictive model.
 
 ### Outside the first version
@@ -79,11 +93,11 @@ Source availability and coverage must be verified experimentally. Having a route
 
 ## Implementation status
 
-Status reflects the published backend inspected on **23 October 2026**.
+Status includes the published backend diagnostics and Flutter verification recorded on **24 October 2026**.
 
 | Component | Status | Evidence or limitation |
 | --- | --- | --- |
-| Repository and task backlog | Present | 16 assigned issues with expected outcomes, deadlines, and acceptance criteria |
+| Repository and task backlog | Present | 16 original assigned tasks plus 3 assigned backend defect tasks, with evidence and acceptance criteria |
 | PostgreSQL configuration | Present in code | Docker Compose defines PostgreSQL 16; actual deployment is not established by the configuration alone |
 | Database models | Implemented prototype | `Route`, `PriceSnapshot`, and `PriceAlert` |
 | FastAPI endpoints | Implemented prototype | Health, routes, collection, history, analytics, and alert-rule creation |
@@ -94,9 +108,9 @@ Status reflects the published backend inspected on **23 October 2026**.
 | Alert handling | Partial | Threshold checks and notification-state updates exist; actual push delivery is absent |
 | Scheduled collection | Not implemented | Collection is invoked through an API endpoint |
 | SCAT parser integration | Not present in this repository | The published collector does not call a SCAT parser |
-| Mobile application and clickable prototype | Not published | No `mobile/` directory or prototype link |
-| Automated tests and CI | Not published | Manual checks are described below |
-| Requirements, research, and architecture documents | Pending | Tracked in the linked issues |
+| Mobile application and clickable prototype | Flutter demo available; native builds/integration unverified | [Flutter source, tests and launch instructions](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); earlier HTML sketch retained as a visual reference |
+| Automated tests and CI | 17 Flutter tests pass; offline backend diagnostics published; CI pending | [Flutter checks](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); backend diagnostic review below |
+| Requirements, research, and architecture documents | Drafts available | See the documentation index; student/supervisor review and real user evidence remain pending |
 
 ## Data-source limitations that affect the current prototype
 
@@ -135,33 +149,34 @@ These are seed directions, not a verified coverage report.
 
 ## Architecture and data flow
 
-Current flow:
+The [architecture document](docs/ARCHITECTURE.md) separates code dependencies from the target collection/delivery flow and provides editable sources and SVG previews.
 
-1. FastAPI initializes the tables and seeds routes when the application starts.
-2. A manual `POST /api/v1/collect` call selects one future departure date for all active routes.
-3. The collector requests the provider when a token is configured, or follows its current simulation fallback.
-4. Normalized values are stored in PostgreSQL as price snapshots.
-5. The collector evaluates matching alert rules and updates their notification-state fields.
-6. Read endpoints provide route lists, snapshot history, and statistical assessment.
+Current execution:
 
-The mobile client, scheduler, and push-delivery integration are planned components.
+1. Backend import creates tables; startup seeds 12 candidate directions.
+2. A manual `POST /api/v1/collect` call synchronously collects one future departure date across active routes.
+3. The provider adapter inside the collector requests Travelpayouts when configured. Missing results or errors can enter the current random fallback.
+4. The collector adds snapshots, checks matching alert rules, updates rule state and commits.
+5. Read endpoints query stored data or invoke the median/linear analytics service.
+6. Flutter defaults to `DEMO_MODE=true` and reads local synthetic fixtures. Experimental HTTP methods exist; integration remains unverified.
+
+Stored fallback values are not verified live prices. Updating alert fields does not send a push. The scheduler, trustworthy collection outcomes and real delivery remain planned.
 
 ```mermaid
-flowchart LR
-    Operator["Developer / operator"] -->|"manual collection"| API["FastAPI"]
-    Mobile["Planned mobile client"] -.->|"read data / create tracking rule"| API
-    API --> Collector["Collector"]
-    Collector --> Provider["Travelpayouts request adapter"]
-    Collector --> Demo["Current simulation fallback"]
-    Provider --> Collector
-    Demo --> Collector
-    Collector --> DB[("PostgreSQL")]
-    API --> Analytics["Median / linear baseline"]
+flowchart TB
+    Mobile["Flutter client in mobile-app"] -->|"default demo mode"| Fixtures["Synthetic fixtures / local preferences"]
+    Mobile -.->|"experimental HTTP mode"| API["FastAPI"]
+    Operator["Operator"] -->|"manual POST /collect"| API
+    API --> Collector["Collector with internal provider adapter"]
+    Collector --> Source["External Travelpayouts API"]
+    Collector --> Fallback["Random fallback inside collector"]
+    Collector --> DB[("PostgreSQL / SQLAlchemy")]
+    API --> Analytics["Median / linear analytics"]
     Analytics --> DB
     API --> DB
 ```
 
-This overview does not replace the required System Context, Use Case, and draft Component diagrams with editable sources.
+See the [context, use-case, component, entity and target-flow diagrams](docs/ARCHITECTURE.md). Code dependencies do not establish live source coverage or production deployment.
 
 ## Database entities
 
@@ -184,17 +199,18 @@ Current limitations include floating-point money fields, no observation identity
 | Persistence | PostgreSQL 16, SQLAlchemy, Psycopg2 | Configuration and models present |
 | HTTP integration | HTTPX | Present |
 | Analytics | Python statistics and a simple least-squares calculation | Present |
-| Mobile | Flutter/Dart; chart library to be confirmed | Planned |
+| Mobile | Flutter/Dart, Material 3 and CustomPainter | Web demo built and checked; native targets pending |
 | Project management | GitHub Issues and GitHub Projects | In use |
 
 The dependency file currently does not pin versions. A reproducible dependency set and a comparison of alternatives for at least three technical decisions remain to be completed in [issue #11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11).
 
-## Published repository structure
+## Structure in this documentation branch
 
 ```text
 airfare-monitoring-kz/
 ├── .gitignore
 ├── README.md
+├── docs/                    # Checkpoint drafts, diagrams and earlier HTML reference
 └── backend/
     ├── .env
     ├── docker-compose.yml
@@ -214,7 +230,7 @@ airfare-monitoring-kz/
 
 At the time of review, `.gitignore` is empty and `backend/.env` is tracked. Configuration hygiene needs an update: provide an `.env.example`, ignore local `.env` files and virtual environments, and keep real credentials out of Git history.
 
-The folders `docs/`, `mobile/`, and `tests/` are not yet published. They are planned deliverables rather than existing implementation.
+The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The Flutter/Dart client, Web launcher and `mobile/test/` checks are kept in the separate [mobile-app branch](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app/mobile). The offline backend diagnostic runner is published under docs/evidence; a maintained regression suite and native platform launch folders remain outstanding.
 
 ## Running the backend locally
 
@@ -283,7 +299,7 @@ The application connects to the database during module import and creates tables
 - [OpenAPI schema](http://127.0.0.1:8000/openapi.json)
 - [Health check](http://127.0.0.1:8000/health)
 
-There are no mobile-client launch instructions yet because mobile source code has not been published.
+See [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) for Flutter demo launch, verification commands and limitations. This mode uses synthetic client-only data without calling the backend or airfare providers.
 
 ## API endpoints
 
@@ -302,7 +318,7 @@ The history response currently omits `flight_number`, although the database mode
 
 ## Verification and testing
 
-There is no committed automated test suite or CI workflow yet. Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
+A reproducible offline backend diagnostic runner and results are published under docs/evidence on pre-defense-documents; a maintained backend regression suite and CI remain pending. The Flutter prototype has 17 passing tests documented in [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
 
 ### Backend review performed on 23 October 2026
 
@@ -325,7 +341,7 @@ Nine Python files passed syntax parsing. Twelve diagnostic scenarios were exerci
 | Route history | Observations for two departure dates were returned together; flight number was absent from the response |
 | Historical median | Prior price 10,000 and current price 20,000 produced median 15,000, showing inclusion of the current observation |
 
-The review did not establish PostgreSQL deployment, real provider access, live price coverage, push delivery, or mobile behavior. The diagnostic runner is not part of the published test suite. A committed regression suite remains an engineering task.
+The review did not establish PostgreSQL deployment, real provider access, live price coverage, push delivery, or mobile behavior. The original review is historical; the updated 24 October runner and results are now published with the documentation. A maintained backend regression suite remains an engineering task.
 
 ### Read-only smoke checks
 
@@ -371,15 +387,15 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | --- | --- |
 | Proposal and scope | Initial overview in this README; full reviewed proposal pending in [#1](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/1) |
 | Evidence of relevance | 3–5 real user discussions pending in [#2](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/2) |
-| Existing-system comparison | 3–5 systems and 6–10 criteria; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
+| Existing-system comparison | [Draft: 3 systems × 8 criteria](docs/EXISTING_SYSTEMS.md), awaiting review; [#3](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/3) |
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
-| Clickable prototype | Main scenarios and error states; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
-| Literature review | At least 12 distinct sources including 8 scientific publications; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
+| Clickable prototype | [Flutter demo](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
+| Literature review | [Draft: 14 sources including 10 scholarly publications](docs/LITERATURE_REVIEW.md), awaiting student/supervisor review; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
 | Collection and storage documentation | [#10](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/10) |
-| Technology comparison | At least 3 decisions with 2–3 alternatives each; [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
+| Technology comparison | [Draft: 3 decisions × 3 candidates](docs/TECHNOLOGY_COMPARISON.md), awaiting review; [#11](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/11) |
 | Context and Component Diagrams | Editable sources and exports; [#12](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/12) |
 | Verification/evaluation plan | Metrics, conditions, checks, and baseline; [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
 | Supervisor feedback | Actual comments and actions; [#15](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/15) |
@@ -425,3 +441,8 @@ Before submission, review the exact revision and create the required `pre-defens
 4. Add input validation, controlled collection access, automated tests, and reproducible dependencies.
 5. Publish the mandatory documents, diagrams, and clickable prototype.
 6. Implement and evaluate the mobile client and actual notification delivery.
+
+
+## Verification update recorded on 24 October 2026
+
+The Flutter Web prototype passed 17 tests, static analysis and a release build. Offline backend diagnostics completed with 6 passed and 10 failed conditions; no provider requests were made. The source-integrity, history and access/validation repairs are tracked in #20, #21 and #22, assigned to Bekbauly. [Recorded results](docs/VERIFICATION_RESULTS.md) include revisions, reproducible conditions and evidence; [project management and risks](docs/PROJECT_PLAN.md) contains owners, dependencies, qualitative risk scores and release gates. User discussions, peer review and supervisor feedback remain pending.

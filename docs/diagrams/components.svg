@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320" role="img" aria-labelledby="title desc">
+<title id="title">Components present in the repository</title>
+<desc id="desc">Solid: dependency exists in code | Dashed: experimental API path, integration unverified</desc>
+<rect width="100%" height="100%" fill="white"/>
+<polyline points="680,155 530,155" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="530,155 544.9189035521364,146.84976584372853 544.9189035521364,163.15023415627144" fill="#555555"/>
+<polyline points="920,240 920,400" fill="none" stroke="#555555" stroke-width="3" stroke-dasharray="12 8"/>
+<polygon points="920,400 911.8497658437285,385.0810964478637 928.1502341562715,385.0810964478637" fill="#555555"/>
+<polyline points="680,470 290,470 290,700" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="290,700 281.84976584372856,685.0810964478636 298.15023415627144,685.0810964478636" fill="#555555"/>
+<polyline points="1160,470 1510,470 1510,700" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="1510,700 1501.8497658437286,685.0810964478636 1518.1502341562714,685.0810964478636" fill="#555555"/>
+<polyline points="920,590 920,1020" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="920,1020 911.8497658437285,1005.0810964478636 928.1502341562715,1005.0810964478636" fill="#555555"/>
+<polyline points="290,900 290,1050" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="290,1050 281.84976584372856,1035.0810964478637 298.15023415627144,1035.0810964478637" fill="#555555"/>
+<polyline points="530,800 610,800 610,1120 680,1120" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="680,1120 665.0810964478636,1128.1502341562714 665.0810964478636,1111.8497658437286" fill="#555555"/>
+<polyline points="1270,800 1220,800 1220,1120 1160,1120" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="1160,1120 1174.9189035521363,1111.8497658437286 1174.9189035521363,1128.1502341562714" fill="#555555"/>
+<rect x="50" y="70" width="480" height="170" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="290.0" y="115.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Demo data</text>
+<text x="290.0" y="155.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Synthetic history</text>
+<text x="290.0" y="195.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Persistent local rules</text>
+<rect x="680" y="70" width="480" height="170" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="920.0" y="115.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Flutter client</text>
+<text x="920.0" y="155.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">mobile-app branch</text>
+<text x="920.0" y="195.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">DEMO_MODE=true by default</text>
+<rect x="680" y="400" width="480" height="190" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="920.0" y="435.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">FastAPI</text>
+<text x="920.0" y="475.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">HTTP routing</text>
+<text x="920.0" y="515.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Routes / history / alerts</text>
+<text x="920.0" y="555.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Collect / analytics</text>
+<rect x="50" y="700" width="480" height="200" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="290.0" y="740.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Collection service</text>
+<text x="290.0" y="780.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Provider adapter inside</text>
+<text x="290.0" y="820.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Fetch / normalize / store</text>
+<text x="290.0" y="860.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Threshold checks</text>
+<rect x="1270" y="700" width="480" height="200" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="1510.0" y="760.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Analytics</text>
+<text x="1510.0" y="800.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">History by route + date</text>
+<text x="1510.0" y="840.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Median / linear baseline</text>
+<rect x="50" y="1050" width="480" height="150" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="290.0" y="1085.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Travelpayouts API</text>
+<text x="290.0" y="1125.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">External cached quotes</text>
+<text x="290.0" y="1165.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Live coverage unverified</text>
+<rect x="680" y="1020" width="480" height="200" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="920.0" y="1060.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">PostgreSQL</text>
+<text x="920.0" y="1100.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">SQLAlchemy models</text>
+<text x="920.0" y="1140.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Route / Snapshot / Alert</text>
+<text x="920.0" y="1180.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Deployment unverified</text>
+<rect x="524.5" y="87" width="151.0" height="36" fill="white"/>
+<text x="600" y="105" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">Demo mode</text>
+<rect x="1002.0" y="297" width="386.0" height="36" fill="white"/>
+<text x="1195" y="315" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">HTTP when DEMO_MODE=false</text>
+<rect x="295.5" y="407" width="169.0" height="36" fill="white"/>
+<text x="380" y="425" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">POST /collect</text>
+<rect x="1330.5" y="407" width="179.0" height="36" fill="white"/>
+<text x="1420" y="425" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">GET /analytics</text>
+<rect x="975.0" y="927" width="170.0" height="36" fill="white"/>
+<text x="1060" y="945" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">Routes / rules</text>
+<rect x="161.0" y="962" width="108.0" height="36" fill="white"/>
+<text x="215" y="980" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">Request</text>
+<rect x="613.5" y="952" width="73.0" height="36" fill="white"/>
+<text x="650" y="970" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">Write</text>
+<rect x="1292.0" y="972" width="156.0" height="36" fill="white"/>
+<text x="1370" y="990" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">Read history</text>
+<text x="900.0" y="1298" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#202020">Solid: dependency exists in code | Dashed: experimental API path, integration unverified</text>
+</svg>

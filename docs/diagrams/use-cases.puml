@@ -1,0 +1,21 @@
+@startuml
+title Use Case Diagram — draft, 23 October 2026
+left to right direction
+actor Traveler
+actor Operator
+rectangle "Airfare Monitoring KZ — intended scope" {
+usecase "Select route and date\nFR-01/02" as Select
+usecase "View history and freshness\nFR-04/05" as History
+usecase "Inspect assessment\nFR-06" as Assess
+usecase "Configure threshold tracking\nFR-07" as Track
+usecase "Receive qualifying alert\nFR-08; planned delivery" as Alert
+usecase "Run controlled collection\nFR-03; access control planned" as Collect
+}
+Traveler --> Select
+Traveler --> History
+Traveler --> Assess
+Traveler --> Track
+Traveler --> Alert
+Operator --> Collect
+note bottom of History : Loading, missing and error states: FR-09
+@enduml

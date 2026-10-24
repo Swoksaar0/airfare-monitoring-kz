@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Airfare KZ — кликабельный прототип</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="workspace">
+    <aside class="presentation" aria-label="Описание прототипа">
+      <a class="wordmark" href="#search"><span class="brand-icon">↗</span> AIRFARE <span class="muted">KZ</span></a>
+      <div class="eyebrow">ДИПЛОМНЫЙ ПРОЕКТ · ПРОТОТИП 01</div>
+      <h1>Понимать цену.<br>Планировать поездку.</h1>
+      <p class="intro">История цен на внутренних маршрутах Казахстана — в одном понятном интерфейсе.</p>
+      <div class="scenario-list" aria-label="Сценарии для просмотра">
+        <button type="button" data-action="restart"><span>01</span><div>Выбрать направление<small>Маршрут и дата вылета</small></div><b>↗</b></button>
+        <button type="button" data-action="demo-offers"><span>02</span><div>Посмотреть предложения<small>Рейс, цена и доступные сведения</small></div><b>↗</b></button>
+        <button type="button" data-action="demo-history"><span>03</span><div>Изучить динамику<small>Наблюдения для одной даты вылета</small></div><b>↗</b></button>
+        <button type="button" data-action="demo-track"><span>04</span><div>Настроить отслеживание<small>Порог цены и пример уведомления</small></div><b>↗</b></button>
+      </div>
+      <div class="review-note"><strong>Для проверки сценариев</strong><p>Все цены, рейсы и графики искусственные. Источник авиабилетов не подключён. Это прототип интерфейса, а не работающий сервис бронирования.</p></div>
+      <p class="caption">Подготовлено 23 октября 2026 · материалы к первой предзащите</p>
+    </aside>
+    <section class="preview" aria-label="Мобильный прототип">
+      <div class="preview-toolbar"><span class="eyebrow">ПРЕДПРОСМОТР ПРИЛОЖЕНИЯ</span><label for="demo-state">Состояние</label><select id="demo-state" aria-label="Состояние"><option value="ready">Данные есть</option><option value="empty">Нет данных</option><option value="error">Ошибка</option><option value="loading">Загрузка</option><option value="stale">Устаревшие данные</option></select></div>
+      <div class="phone">
+        <header class="phone-header"><a href="#search" class="app-brand" aria-label="Airfare KZ, поиск"><span class="brand-icon">↗</span><span>airfare<span class="brand-kz">kz</span></span></a><span class="region-badge">KAZAKHSTAN</span></header>
+        <div class="demo-banner"><span class="demo-dot"></span> ДЕМО · искусственные цены и рейсы</div>
+        <div id="screen" class="screen" tabindex="-1"></div>
+        <nav class="bottom-nav" aria-label="Разделы приложения">
+          <a href="#search" data-nav="search"><span aria-hidden="true">⌕</span>Поиск</a>
+          <a href="#history" data-nav="history"><span aria-hidden="true">↗</span>Динамика</a>
+          <a href="#tracking" data-nav="tracking"><span aria-hidden="true">◇</span>Отслеживание</a>
+        </nav>
+      </div>
+      <p class="preview-hint">Кнопки и вкладки работают. Демоправила сохраняются только в этом браузере.</p>
+    </section>
+  </main>
+  <div id="toast" role="status" class="toast" hidden></div>
+</body>
+</html>
