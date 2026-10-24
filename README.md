@@ -39,7 +39,7 @@ The project investigates how repeated observations of domestic airfare quotes ca
 
 The intended users are people who plan flights within Kazakhstan and want to review the available price history, understand when a quote was collected, and set a price threshold for tracking.
 
-The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings remain outstanding. A [critical literature review](docs/LITERATURE_REVIEW.md) now analyzes 13 sources, including 9 scholarly publications, with access limits and proposed student review responsibilities. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
+The initial design assumes that these capabilities would be useful. This assumption still needs evidence from 3–5 real discussions with potential users. User-discussion findings remain outstanding. A [critical literature review](docs/LITERATURE_REVIEW.md) now analyzes 14 sources, including 10 scholarly publications, with access limits and proposed student review responsibilities. A [document-based service comparison](docs/EXISTING_SYSTEMS.md) is available as a draft for review. The project does not claim that all existing booking services lack these capabilities.
 
 ## Aim and objectives
 
@@ -390,7 +390,7 @@ No accuracy, usability, coverage, or latency results are claimed yet.
 | Functional/non-functional requirements | IDs, priorities, and acceptance criteria; [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Use Case Diagram | Editable source and export; [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5) |
 | Clickable prototype | [Flutter demo](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) and [earlier UI reference](docs/prototype/README.md), awaiting review; [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
-| Literature review | [Draft: 13 sources including 9 scholarly publications](docs/LITERATURE_REVIEW.md), awaiting student/supervisor review; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
+| Literature review | [Draft: 14 sources including 10 scholarly publications](docs/LITERATURE_REVIEW.md), awaiting student/supervisor review; [#7](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/7) and [#13](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/13) |
 | Milestones, risks, and dependencies | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | README and repository organization | [#9](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/9) |
 | Collection and storage documentation | [#10](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/10) |
