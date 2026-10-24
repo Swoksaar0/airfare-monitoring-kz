@@ -11,7 +11,7 @@ Requirements: route/date input and history (FR-01/02/04), clear demo/error state
 
 | Candidate | Documented model | Fit for this project | Trade-off / work required |
 | --- | --- | --- | --- |
-| **Flutter / Dart — selected** | Shared application code with mobile and Web targets; platform features may require plugins/native integration [F1] / [F2] | Existing Dart source, Material UI, a Web build and two tests provide a starting point | Native build environments and device testing remain necessary; a successful Web build does not verify Android/iOS behavior |
+| **Flutter / Dart — selected** | Shared application code with mobile and Web targets; platform features may require plugins/native integration [F1] / [F2] | Existing Dart source, Material UI, a Web build and 17 passing tests provide a checked starting point | Native build environments and device testing remain necessary; a successful Web build does not verify Android/iOS behavior |
 | React Native / JavaScript or TypeScript | React components use Android/iOS native capabilities; native modules/components cover platform integration [R1] / [R2] | Viable for the same route/history/notification scenarios | Would replace the current Dart client and require verifying native libraries; migration effort is inferred, not measured |
 | Kotlin Multiplatform, optionally Compose Multiplatform | Can share selected logic and, with Compose, UI; native UI is also possible [K1] | Viable if Kotlin/shared-domain or native-UI integration becomes a priority | Requires choosing a sharing boundary and establishing its platform/build setup; no KMP prototype was implemented here |
 
@@ -51,7 +51,7 @@ Requirements: exact money and currency (NFR-02), route/date history (FR-04), obs
 
 | Decision | Selected | Evidence currently available | Still required |
 | --- | --- | --- | --- |
-| T1 | Flutter/Dart | Source in mobile/, static analysis, two tests, Web release build and browser checks | Native builds, persistent local storage, complete scenarios, backend integration |
+| T1 | Flutter/Dart | Source in mobile/, static analysis, 17 tests, Web release build and browser persistence checks | Native builds, real API integration, screen-reader/user checks and delivered push |
 | T2 | FastAPI/Python | Published endpoints and mocked/offline API diagnostics | Data-trust fixes, authorization, real source pilot, production deployment |
 | T3 | PostgreSQL for shared backend; SQLite for isolated tests | ORM/Compose configuration; disposable SQLite used in review | PostgreSQL deployment/migrations and integrity/recovery checks |
 

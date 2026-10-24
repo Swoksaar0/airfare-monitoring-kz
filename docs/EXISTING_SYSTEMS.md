@@ -15,11 +15,11 @@ A calendar/graph comparing different **departure dates** is not proof of a chron
 
 | Criterion | Google Flights | Aviasales | Skyscanner | Current Flutter demo |
 | --- | --- | --- | --- | --- |
-| C1. Search by direction and departure date | Documented route/date and one-way search [G1] | Route, dates, passengers and cabin selection [A1] | Route/date search is part of the documented alert workflow [S1] | 12 candidate directions; fixed demo departure 2026-11-06; date picker pending |
+| C1. Search by direction and departure date | Documented route/date and one-way search [G1] | Route, dates, passengers and cabin selection [A1] | Route/date search is part of the documented alert workflow [S1] | 12 candidate directions; future-date picker and shortcuts; synthetic route/date fixtures |
 | C2. Compare prices across different departure dates | Date grid and price graph [G1] | Price calendar and flexible dates [A1] | Monthly calendar/grid of indicative prices [S2] | Not implemented |
-| C3. Receive price-change notifications | Email updates for tracked routes/flights; searched dates or flexible dates [G2] | Favorite a ticket to receive price-change notifications [A1] | Route/date alerts via account and email [S1] | Session-local threshold only; no delivered push |
-| C4. Save/manage tracked options | Tracked Flights supports viewing, toggling email and removing tracking [G2] | Saving a ticket in Favorites is documented [A1]; management details not evaluated | Alerts can be removed through profile/email [S1] | Session favorites and a local threshold; restart persistence pending |
-| C5. History of a fixed departure date over observation time | Partial: historical insights are documented for some routes [G3]; a complete raw observation series is not established | A fixed-departure longitudinal-history display is not established by [A1]; its calendar serves C2 | A fixed-departure longitudinal-history display is not established by [S1] / [S2]; its monthly grid serves C2 | Five synthetic observation dates for one fixed departure; no real history yet |
+| C3. Receive price-change notifications | Email updates for tracked routes/flights; searched dates or flexible dates [G2] | Favorite a ticket to receive price-change notifications [A1] | Route/date alerts via account and email [S1] | Persistent device-local rules; no delivered push |
+| C4. Save/manage tracked options | Tracked Flights supports viewing, toggling email and removing tracking [G2] | Saving a ticket in Favorites is documented [A1]; management details not evaluated | Alerts can be removed through profile/email [S1] | Persistent local favorites/rules; browser reload verified |
+| C5. History of a fixed departure date over observation time | Partial: historical insights are documented for some routes [G3]; a complete raw observation series is not established | A fixed-departure longitudinal-history display is not established by [A1]; its calendar serves C2 | A fixed-departure longitudinal-history display is not established by [S1] / [S2]; its monthly grid serves C2 | Five synthetic observations for the selected route/date; no real history yet |
 | C6. Baggage context for comparison | Bag-fee filter uses partner baggage information [G4] | Results include baggage information and a baggage filter [A1] | Allowances/fees depend on provider and fare; confirm what is included [S3]; equivalent result-filter coverage not established | No baggage UI/data in this Flutter version; do not infer allowances |
 | C7. Price freshness/availability limitations | Partner inventory is incomplete; booking price discrepancies can occur [G1]. No collection-time SLA was tested | Freshness interval and observation timestamp behavior not established by the reviewed guide [A1] | Calendar prices are indicative [S2]; alerts are a snapshot and can differ from later availability [S4] | Explicit synthetic-data banner; source freshness not demonstrated |
 | C8. Documented user interface channels | Browser workflow, including mobile browser instructions [G1] | Website and mobile application [A1] | Desktop/mobile website and mobile app workflows [S1] / [S2] | Flutter Web checked; Android/iOS not built |
@@ -36,9 +36,9 @@ A calendar/graph comparing different **departure dates** is not proof of a chron
 
 **Design implications:**
 
-- FR-02 needs an actual departure-date selector; changing the departure date must change the group being analyzed.
+- FR-02 has a checked client date selector; server filtering and real route/date integration still require verification.
 - FR-04/05 must distinguish observation time, departure time and indicative/cached/live status.
-- FR-07/08 need explicit rule management and actual delivery evidence; do not claim that a boolean threshold check sends a notification.
+- FR-07 has device-local rule management; server rules and FR-08 delivery still need verification. A threshold state update is not a sent notification.
 - Baggage should remain unknown until a source supplies its unit, quantity, weight and applicability.
 - User discussions must establish whether these explanations help the target users; product documentation cannot substitute for interviews.
 
