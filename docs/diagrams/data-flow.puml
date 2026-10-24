@@ -1,0 +1,26 @@
+@startuml
+title Target data flow after data trust corrections
+top to bottom direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+component "1  Select collection target\nOperator or future bounded scheduler\nRoute / departure / passengers / currency" as Target #F5F5F5
+component "2  Request source data\nServer-side provider adapter\nAPI credentials remain on the server" as Fetch #F5F5F5
+component "3  Validate response and identity\nCheck route / date / currency / amount\nUnknown metadata remains unknown" as Validate #F5F5F5
+component "No valid quote\nRecord run outcome\nDo not write a price\nNo invented values" as Outcomes #F5F5F5
+database "4  Persist accepted observations\nSource / timestamps / cache or demo status\nCommit accepted observations first" as Store #F5F5F5
+component "5  Read a comparable history\nAPI and analytics by route / departure\nReturn timestamps and data kind" as Read #F5F5F5
+component "Future delivery\nCheck real observation\nAttempt push\nRecord outcome" as Delivery #F5F5F5
+component "6  Flutter presentation\nShow history / assessment / timestamps\nDisplay delivery status honestly" as Client #F5F5F5
+Target ..> Fetch : Bounded work item
+Fetch ..> Validate : Response or failure
+Validate ..> Outcomes : Not accepted
+Validate ..> Store : Accepted quote
+Store ..> Read : Stored history
+Read ..> Client : HTTP JSON
+Store ..> Delivery : After commit
+Delivery ..> Client : Device notification
+legend bottom
+Proposed behavior | Scheduler, outcome records and push delivery are not implemented
+endlegend
+@enduml

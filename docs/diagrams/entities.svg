@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1220" viewBox="0 0 1800 1220" role="img" aria-labelledby="title desc">
+<title id="title">Existing ORM entities and relationships</title>
+<desc id="desc">Existing schema only | 1 to 0..* | Source / run / delivery tables are proposed separately</desc>
+<rect width="100%" height="100%" fill="white"/>
+<polyline points="745,375 745,470 450,470 450,585" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="450,585 441.84976584372856,570.0810964478636 458.15023415627144,570.0810964478636" fill="#555555"/>
+<polyline points="1055,375 1055,470 1350,470 1350,585" fill="none" stroke="#555555" stroke-width="3"/>
+<polygon points="1350,585 1341.8497658437286,570.0810964478636 1358.1502341562714,570.0810964478636" fill="#555555"/>
+<rect x="610" y="60" width="580" height="315" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="900.0" y="110.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">Route / routes</text>
+<text x="900.0" y="153.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">PK id</text>
+<text x="900.0" y="196.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">origin_iata / destination_iata</text>
+<text x="900.0" y="239.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">origin_city / destination_city</text>
+<text x="900.0" y="282.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">is_active</text>
+<text x="900.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">UNIQUE(origin_iata, destination_iata)</text>
+<rect x="40" y="585" width="825" height="555" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="452.5" y="690.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">PriceSnapshot / price_snapshots</text>
+<text x="452.5" y="733.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">PK id | FK route_id -&gt; routes.id</text>
+<text x="452.5" y="776.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">departure_date: Date</text>
+<text x="452.5" y="819.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">price_kzt: Float</text>
+<text x="452.5" y="862.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">airline_code / flight_number: nullable</text>
+<text x="452.5" y="905.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">transfers: Integer</text>
+<text x="452.5" y="948.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">source_found_at: required DateTime</text>
+<text x="452.5" y="991.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">collected_at: required DateTime</text>
+<text x="452.5" y="1034.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">is_fresh / days_before_departure</text>
+<rect x="935" y="585" width="825" height="555" rx="12" fill="#EFF3F8" stroke="#444444" stroke-width="3"/>
+<text x="1347.5" y="690.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#202020">PriceAlert / price_alerts</text>
+<text x="1347.5" y="733.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">PK id | FK route_id -&gt; routes.id</text>
+<text x="1347.5" y="776.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">device_token: required String</text>
+<text x="1347.5" y="819.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">departure_date: Date</text>
+<text x="1347.5" y="862.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">threshold_kzt: Float</text>
+<text x="1347.5" y="905.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">is_active: Boolean</text>
+<text x="1347.5" y="948.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">last_notified_price_kzt: nullable</text>
+<text x="1347.5" y="991.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">last_notified_at: nullable</text>
+<text x="1347.5" y="1034.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="#202020">Rule state is not delivery evidence</text>
+<rect x="323.0" y="412" width="224.0" height="36" fill="white"/>
+<text x="435" y="430" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">1 to 0..* snapshots</text>
+<rect x="1280.0" y="412" width="170.0" height="36" fill="white"/>
+<text x="1365" y="430" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#202020">1 to 0..* alerts</text>
+<text x="900.0" y="1198" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#202020">Existing schema only | 1 to 0..* | Source / run / delivery tables are proposed separately</text>
+</svg>

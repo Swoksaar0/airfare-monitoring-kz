@@ -1,0 +1,15 @@
+@startuml
+title Existing ORM entities and relationships
+top to bottom direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+entity "Route / routes\nPK id\norigin_iata / destination_iata\norigin_city / destination_city\nis_active\nUNIQUE(origin_iata, destination_iata)" as Route #EFF3F8
+entity "PriceSnapshot / price_snapshots\nPK id | FK route_id -> routes.id\ndeparture_date: Date\nprice_kzt: Float\nairline_code / flight_number: nullable\ntransfers: Integer\nsource_found_at: required DateTime\ncollected_at: required DateTime\nis_fresh / days_before_departure" as Snapshot #EFF3F8
+entity "PriceAlert / price_alerts\nPK id | FK route_id -> routes.id\ndevice_token: required String\ndeparture_date: Date\nthreshold_kzt: Float\nis_active: Boolean\nlast_notified_price_kzt: nullable\nlast_notified_at: nullable\nRule state is not delivery evidence" as Alert #EFF3F8
+Route "1" -- "0..*" Snapshot
+Route "1" -- "0..*" Alert
+legend bottom
+Existing schema only | 1 to 0..* | Source / run / delivery tables are proposed separately
+endlegend
+@enduml

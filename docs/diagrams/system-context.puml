@@ -1,15 +1,19 @@
 @startuml
-title System Context — draft, 23 October 2026
-left to right direction
-actor Traveler
-actor Operator
-rectangle "Airfare Monitoring KZ\nMobile client + supporting backend\nBackend prototype exists; mobile planned" as System
-cloud "External airfare source\nAccess/coverage unverified" as Source
-cloud "Push delivery provider\nPlanned integration" as Push
-Traveler --> System : select route/date; inspect history; track
-Operator --> System : controlled collection; inspect failures
-System --> Source : bounded quote requests
-Source --> System : quotes / missing data / errors
-System --> Push : delivery requests (planned)
-Push --> Traveler : notifications (planned)
+title System context
+top to bottom direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+actor "Traveler\nRead observations\nSet a threshold" as Traveler #EFF3F8
+actor "Operator\nInitiate collection\nInspect outcomes" as Operator #EFF3F8
+rectangle "Airfare Monitoring KZ\nMobile application and backend\nFlutter demo exists\nBackend prototype exists\nIntegration not verified" as System #EFF3F8
+cloud "Travelpayouts API\nExternal cached-price source\nAccess / coverage unverified" as Provider #EFF3F8
+cloud "Push delivery provider\nFuture external dependency\nNo delivery implemented" as Push #F5F5F5
+Traveler --> System : Read / track
+Operator --> System : Start collection
+System --> Provider : Server request / result
+System ..> Push : Future delivery requests
+legend bottom
+24 October 2026 | Source access and production delivery remain unverified
+endlegend
 @enduml

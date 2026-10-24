@@ -149,33 +149,34 @@ These are seed directions, not a verified coverage report.
 
 ## Architecture and data flow
 
-Current flow:
+The [architecture document](docs/ARCHITECTURE.md) separates code dependencies from the target collection/delivery flow and provides editable sources and SVG previews.
 
-1. FastAPI initializes the tables and seeds routes when the application starts.
-2. A manual `POST /api/v1/collect` call selects one future departure date for all active routes.
-3. The collector requests the provider when a token is configured, or follows its current simulation fallback.
-4. Normalized values are stored in PostgreSQL as price snapshots.
-5. The collector evaluates matching alert rules and updates their notification-state fields.
-6. Read endpoints provide route lists, snapshot history, and statistical assessment.
+Current execution:
 
-The mobile client, scheduler, and push-delivery integration are planned components.
+1. Backend import creates tables; startup seeds 12 candidate directions.
+2. A manual `POST /api/v1/collect` call synchronously collects one future departure date across active routes.
+3. The provider adapter inside the collector requests Travelpayouts when configured. Missing results or errors can enter the current random fallback.
+4. The collector adds snapshots, checks matching alert rules, updates rule state and commits.
+5. Read endpoints query stored data or invoke the median/linear analytics service.
+6. Flutter defaults to `DEMO_MODE=true` and reads local synthetic fixtures. Experimental HTTP methods exist; integration remains unverified.
+
+Stored fallback values are not verified live prices. Updating alert fields does not send a push. The scheduler, trustworthy collection outcomes and real delivery remain planned.
 
 ```mermaid
-flowchart LR
-    Operator["Developer / operator"] -->|"manual collection"| API["FastAPI"]
-    Mobile["Planned mobile client"] -.->|"read data / create tracking rule"| API
-    API --> Collector["Collector"]
-    Collector --> Provider["Travelpayouts request adapter"]
-    Collector --> Demo["Current simulation fallback"]
-    Provider --> Collector
-    Demo --> Collector
-    Collector --> DB[("PostgreSQL")]
-    API --> Analytics["Median / linear baseline"]
+flowchart TB
+    Mobile["Flutter client in mobile-app"] -->|"default demo mode"| Fixtures["Synthetic fixtures / session state"]
+    Mobile -.->|"experimental HTTP mode"| API["FastAPI"]
+    Operator["Operator"] -->|"manual POST /collect"| API
+    API --> Collector["Collector with internal provider adapter"]
+    Collector --> Source["External Travelpayouts API"]
+    Collector --> Fallback["Random fallback inside collector"]
+    Collector --> DB[("PostgreSQL / SQLAlchemy")]
+    API --> Analytics["Median / linear analytics"]
     Analytics --> DB
     API --> DB
 ```
 
-This overview does not replace the required System Context, Use Case, and draft Component diagrams with editable sources.
+See the [context, use-case, component, entity and target-flow diagrams](docs/ARCHITECTURE.md). Code dependencies do not establish live source coverage or production deployment.
 
 ## Database entities
 

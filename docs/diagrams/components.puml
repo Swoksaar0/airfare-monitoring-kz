@@ -1,23 +1,25 @@
 @startuml
-title Component Diagram — draft, 23 October 2026
-left to right direction
-component "Mobile client\nPlanned" as Mobile
-component "FastAPI\nPublished prototype" as API
-component "Collector\nPublished; correctness gaps" as Collector
-component "Analytics\nMedian / linear baseline" as Analytics
-database "PostgreSQL\nModels + Compose; deployment unverified" as DB
-cloud "External airfare source\nLive access/coverage unverified" as Source
-component "Scheduler\nPlanned" as Scheduler
-component "Push adapter/provider\nPlanned; no delivery implemented" as Push
-Mobile --> API : HTTP
-API --> Collector : manual collection
-API --> Analytics : assessment
-API --> DB : routes/history/rules
-Collector --> Source : request/response
-Collector --> DB : observations + alert state
-Analytics --> DB : history
-Scheduler ..> Collector : repeat runs (planned)
-Collector ..> Push : qualifying observation (planned)
-Push ..> Mobile : notification (planned)
-note bottom of Collector : Current fallback invents quotes; source timestamps require correction
+title Components present in the repository
+top to bottom direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle rectangle
+component "Demo data\nSynthetic history\nSession-only state" as Fixture #EFF3F8
+component "Flutter client\nmobile-app branch\nDEMO_MODE=true by default" as Mobile #EFF3F8
+component "FastAPI\nHTTP routing\nRoutes / history / alerts\nCollect / analytics" as API #EFF3F8
+component "Collection service\nProvider adapter inside\nFetch / normalize / store\nThreshold checks" as Collector #EFF3F8
+component "Analytics\nHistory by route + date\nMedian / linear baseline" as Analytics #EFF3F8
+cloud "Travelpayouts API\nExternal cached quotes\nLive coverage unverified" as Source #EFF3F8
+database "PostgreSQL\nSQLAlchemy models\nRoute / Snapshot / Alert\nDeployment unverified" as DB #EFF3F8
+Mobile --> Fixture : Demo mode
+Mobile ..> API : HTTP when DEMO_MODE=false
+API --> Collector : POST /collect
+API --> Analytics : GET /analytics
+API --> DB : Routes / rules
+Collector --> Source : Request
+Collector --> DB : Write
+Analytics --> DB : Read history
+legend bottom
+Solid: dependency exists in code | Dashed: experimental API path, integration unverified
+endlegend
 @enduml
