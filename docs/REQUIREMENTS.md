@@ -41,7 +41,7 @@ A traveler selects a directional route and departure date, views available obser
 
 ## Present-code gap assessment
 
-FR-01 has implementation evidence. FR-02/04/06/07/12 are partial or require changes. FR-03/05/11 fail the current collector's data-trust requirements. Actual FR-08 delivery is absent. A Flutter demo now presents route/history, local thresholds and session favorites; native behavior and durable-storage acceptance for FR-09/10 remain unverified.
+FR-01 has implementation evidence. Flutter revision d14b0d8a now verifies future-date selection, prior-only median, persistent device-local favorites/rules and loading/empty/error/stale/single states through 17 tests and browser checks. These support client portions of FR-02/04/05/06/07/09/10/11; they do not establish server acceptance or native behavior. Backend diagnostics on 24 October record 6 PASS and 10 FAIL; source integrity, UTC semantics, history isolation, identity, access and validation need #20–#22. Actual FR-08 delivery is absent. See VERIFICATION_RESULTS.md for the measured boundary.
 
 The code uses floating-point prices, invents missing metadata, stores repeated quotes, mixes departure dates in the history endpoint, and lacks collection authentication. Listing these requirements does not mean those gaps have been fixed.
 

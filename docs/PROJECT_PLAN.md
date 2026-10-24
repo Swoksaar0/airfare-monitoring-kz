@@ -1,55 +1,66 @@
-# Project plan, responsibilities, risks and dependencies
+# Project management and risks
 
-**Status:** proposed plan for review, 23 October 2026.  
-**Related issue:** [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8)
+**Baseline:** 24 October 2026; technical evidence recorded, student/supervisor agreement pending.  
+**Related issue:** [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8). [Project board](https://github.com/users/Swoksaar0/projects/2/views/1).
 
-## Responsibilities
+## Responsibilities and coordination
 
-Dinmukhammed owns user-facing requirements, user research, prototype, mobile client and notifications. Bekbauly owns source access, backend, database and analytics. Both review interfaces, documentation, experiments and integration. Task ownership does not imply that the assignee has already reviewed or accepted a draft prepared for them.
+Dinmukhammed (@Swoksaar0) owns requirements, user discussions, UX, Flutter, local tracking and future notification presentation. Bekbauly (@Bekbauly) owns provider access, backend, data storage and analytics. Backend commits already contain Bekbauly's implementation; the review identifies repairs to that work, not an absence of contribution. Both review the API contract, research, integration and submission materials. Ownership and an assistant-prepared draft are not proof that an individual completed reading or review.
 
-## Immediate checkpoint work
+Use a short daily issue update during active work: evidence produced, next action, blocker and requested decision. Review risks after every source/API change and before collection or submission. Do not send participant or supervisor messages automatically; the students arrange those discussions themselves.
 
-| Sequence | Deliverable | Responsible | Dependency / review | Target |
-| --- | --- | --- | --- | --- |
-| 1 | Proposal, requirements and diagrams | Dinmukhammed / Bekbauly according to issues #1/#4/#5/#12 | Cross-review and consistency | 23 Oct |
-| 2 | 3–5 user discussions | Dinmukhammed | Real respondents; use evidence template | 23–24 Oct |
-| 3 | Literature review: ≥12 sources, ≥8 scientific | Both; #7 and #13 | Distinct sources and critical synthesis | 23–24 Oct |
-| 4 | Existing-system and technology comparisons | Dinmukhammed #3; Bekbauly #11 | Supported criteria, requirements | 23–24 Oct |
-| 5 | Key-scenario prototype | Dinmukhammed #6 | Draft requirements and data labels | 24 Oct |
-| 6 | Verification plan and factual backend evidence | Bekbauly #14 | Baseline, metrics, reproducible conditions | 23–24 Oct |
-| 7 | Supervisor review and response | Bekbauly #15; both apply comments | Materials available; actual review appointment | 24 Oct |
-| 8 | Submission/access/revision check | Bekbauly #16; Dinmukhammed reviews | Required artifacts and peer review | 24 Oct |
+## Checkpoint status and remaining work
 
-Targets express the proposed work order, not completed milestones. If discussions or supervisor availability prevent completion, record the missing evidence honestly and notify the supervisor.
+| Work package | Evidence or current state | Owner and next gate |
+| --- | --- | --- |
+| Proposal, requirements, comparisons and diagrams; #1/#3/#4/#5/#11/#12 | Drafts available in documentation PR #18; acceptance review pending | Both: cross-check claims and agree scope |
+| Literature; #7/#13 | 14 sources, 10 scholarly; synthesis available, reading and peer review unconfirmed | Both: review the allocated sources |
+| Flutter prototype; #6 | Revision d14b0d8a; 17 passing tests, Web build and browser evidence | Dinmukhammed; Bekbauly reviews scenarios |
+| Verification; #14 | Plan plus executed offline results, 6 passed and 10 failed backend diagnostics | Bekbauly; Dinmukhammed reviews evidence |
+| Management; #8 | Owners, staged milestones, risks and linked defect issues prepared | Dinmukhammed; Bekbauly reviews; board fields/access unverified |
+| User discussions; #2 | No real responses supplied | Dinmukhammed: conduct and record 3–5 discussions |
+| Supervisor review; #15 | No substantive comments or approval supplied | Bekbauly: arrange consultation and record real decisions |
+| Final submission; #16 | No agreed submission tag | Both: review package, access and remaining evidence |
 
-## Later engineering milestones
+Original issue targets were 23–24 October. Materials still awaiting human evidence or review are not retroactively complete. Keep original deadlines in issue history and record revised estimates separately. The checkpoint requires a justified plan and prototype; the entire production service is not claimed complete.
 
-1. Correct source provenance, timestamps and simulation handling before a real-data pilot.
-2. Establish repeat collection for fixed departure cohorts, observation identity and reliable storage.
-3. Stabilize route/date API contracts while implementing the mobile client.
-4. Implement logged notification delivery and suppression.
-5. Compare analytics/ML baselines only after suitable real history exists.
-6. Complete deployment, user evaluation and final reproducibility checks.
+## Next milestones and dependencies
 
-## Risk register
-
-| Risk | Effect | Mitigation | Owner |
+| Stage | Proposed target or trigger | Owner | Exit condition |
 | --- | --- | --- | --- |
-| Provider restrictions, quotas or limited coverage | Missing prices or interrupted collection | Small coverage pilot, bounded requests, explicit missing/error outcomes | Bekbauly |
-| Simulation or wrong timestamps treated as real | Invalid analysis and freshness claims | Separate demo data; preserve unknowns; validate source time/UTC before collection | Bekbauly |
-| Insufficient distinct history | Unreliable ML evaluation | Start correct accumulation early; fixed dates; simple baseline; state insufficiency | Bekbauly |
-| Mixed departure dates or duplicate cached quotes | Misleading graphs and sample counts | Route/date grouping and source identity | Both |
-| Mobile/backend mismatch | Integration delays | Agree DTOs and scenario fixtures; review contract changes | Both |
-| Notifications recorded but not delivered | False user expectations | Delivery adapter/log and failure tests | Dinmukhammed |
-| Late user/supervisor feedback | Missing checkpoint evidence | Arrange real discussions and review promptly; track outstanding actions | Both |
-| Broken links/access or missing artifacts | Unverifiable submission | Peer checklist and exact submission revision/tag | Both |
+| M0 Checkpoint review | 24 October; human availability determines completion | Both | Reviewed documents/demo, real missing evidence identified, accessible links |
+| M1 Data trust and collection control | Proposed 25 October; agree with team | Bekbauly | #20 and #22 repaired, affected checks pass and peer review recorded |
+| M2 Comparable history and client contract | Proposed 26 October, after M1 | Bekbauly with Dinmukhammed | #21 passes, route/date fixtures agree, failures remain explicit |
+| M3 Controlled source pilot | After M1/M2, source permission and quota approval | Bekbauly | Request budget recorded; fixed dates observed on multiple days with provenance |
+| M4 Integrated mobile and delivery | After stable API and native setup | Dinmukhammed with Bekbauly | Real API read path and native persistence checked; delivery attempts/outcomes verified |
+| M5 Analysis and final evaluation | When sufficient distinct real history exists | Both | Chronological baseline comparison, usability results and limitations reported |
 
-## Task and review workflow
+These dates are estimates prepared for agreement, not promises attributed to either student. If a prerequisite fails, update the dependent estimate and preserve the blocker. Do not rush an unbounded source poll to recover schedule.
 
-Use existing GitHub issues with one assignee, priority, deadline, expected result and acceptance criteria. Add artifact/PR links. Keep statuses factual: Planned → In progress → In review → Done. Each student uses their own account; the other reviews significant changes. A draft document alone does not justify Done.
+## Risk register and response actions
 
-GitHub Projects is the selected alternative tracker according to the team's reported permission to use analogues. Preserve that permission when available. If the board fails to load, issue descriptions and assigned issue lists remain a traceable planning record; do not claim that the board configuration is verified.
+Score likelihood L and impact I from 1 to 3; risk score is L × I. Scores 6–9 are high, 3–4 medium, 1–2 low. These are qualitative planning judgments. For an observed defect, L=3 means it is already happening. Residual risk stays open until the stated evidence exists.
 
-## Submission gate
+| Risk and score | Trigger or current evidence | Response and closure evidence | Owner |
+| --- | --- | --- | --- |
+| R1 Invalid observations; L3 I3 = 9 high | Generated prices, false source times and accepted invalid amounts reproduced | #20: explicit outcomes, UTC/unknown validation, demo isolation, exact money; affected tests pass | Bekbauly |
+| R2 Uncontrolled collection; L3 I3 = 9 high | Unauthenticated collect succeeds; #22 | Keep collection private; authorize before work and enforce finite budget; denied requests make zero provider calls | Bekbauly |
+| R3 Misleading history; L3 I3 = 9 high | Date mixing, replayed rows and current-inclusive median; #21 | Route/date/context grouping, identity and prior-only baseline; fixture regression passes | Bekbauly |
+| R4 Missing source access/coverage; L2 I3 = 6 high | Quota/restriction, missing route/date result or stale cache during future pilot | Stop at configured budget; log errors, retain unknowns; pilot proves measured scope, no completeness claim | Bekbauly |
+| R5 Insufficient real history; L3 I2 = 6 high | No trusted multi-day dataset verified | Accumulate fixed-date cohorts after repairs; defer ML when evidence is insufficient; report descriptive results | Bekbauly |
+| R6 Mobile/server mismatch; L2 I2 = 4 medium | Client tests pass while backend contract fails | Shared fixtures and integration check after #21; native setup and persistence checked separately | Dinmukhammed |
+| R7 False notification expectation; L3 I2 = 6 high | Local rules and last-notified fields exist; push delivery absent | Keep local-only label; add delivery adapter/log and failure/replay checks before notification claims | Dinmukhammed with Bekbauly |
+| R8 Missing human evidence; L3 I3 = 9 high | Interviews, peer review and supervisor feedback outstanding | Students arrange real sessions; record anonymized findings and actual comments; preserve unresolved decisions | Both |
+| R9 Unverifiable release/access; L2 I2 = 4 medium | Board access, submission tag and clean setup unverified | Check links/permissions and clean setup; agree exact reviewed revision, then tag once | Both |
 
-Verify repository access for supervisor/committee; include README, proposal, research/comparisons, requirements, editable diagram sources and readable exports, prototype, verification plan, task board and actual feedback evidence. After peer review, tag the exact agreed revision pre-defense-1 and provide links, completed-work summary, limitations and outstanding tasks. Do not move a previously submitted tag.
+## Task workflow and change control
+
+Use existing issue ownership and acceptance criteria. Statuses are Planned → In progress → In review → Done; blocked items include a named dependency. The document package and prototype are ready for student review, not automatically Done. Three reproduced defect tasks, #20–#22, are open and assigned to Bekbauly with priorities and proposed dates in their descriptions.
+
+For any scope, source or schema change, record the reason, affected requirement/test, owner, review and effect on the next milestone. Keep backend fixes on backend, mobile changes on mobile-app and report changes on pre-defense-documents. Review each diff before integration; branches still share a common Git baseline.
+
+GitHub Projects is the team's selected alternative tracker. Issue descriptions hold traceable owner/priority/date information, but that does not set structured Project fields. Board membership, columns, edit permissions and the supervisor's access have not been verified here. Both students must check the board before claiming issue #8 complete. The reported permission to use an analogue should be retained when available.
+
+## Submission and completion gate
+
+Before submission, both students check proposal, source analysis, comparisons, requirements, editable diagrams/exports, Flutter walkthrough, verification outcomes, risks, real human feedback and links. Link unresolved defects rather than concealing them. Agree what is submitted and record the reviewers; only then create the exact pre-defense-1 revision/tag. Do not move a submitted tag. No supervisor approval, completed user study, production deployment or final acceptance is asserted by this package.

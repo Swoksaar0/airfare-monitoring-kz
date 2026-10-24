@@ -105,7 +105,7 @@ Each student should record actual reading notes, corrections and a peer review f
 
 ## Implementation boundary and remaining evidence
 
-The current Flutter demo contains synthetic observations and session-only thresholds/favorites. It supplies no training dataset or measured forecast accuracy. The GitHub backend still has documented provenance/time/history defects; the literature does not repair them. No provider integration, native accessibility result, delivered push or user-study result follows from this document.
+The current Flutter demo contains synthetic observations and device-local thresholds/favorites. It supplies no training dataset or measured forecast accuracy. The GitHub backend still has documented provenance/time/history defects; the literature does not repair them. No provider integration, native accessibility result, delivered push or user-study result follows from this document.
 
 Before acceptance: both students review the sources and synthesis; incorporate real user and supervisor comments; confirm the final route sample and forecast target; run the documented checks after implementation. No interviews, supervisor approval or publication reproduction is claimed here.
 
@@ -154,3 +154,4 @@ Publication year means issue/proceedings year where stated. Technical pages were
 
 <a id="d4"></a>
 **[D4]** Flutter. *Testing overview.* [Official documentation](https://docs.flutter.dev/testing/overview).
+

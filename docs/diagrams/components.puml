@@ -4,7 +4,7 @@ top to bottom direction
 skinparam shadowing false
 skinparam defaultFontName Arial
 skinparam componentStyle rectangle
-component "Demo data\nSynthetic history\nSession-only state" as Fixture #EFF3F8
+component "Demo data\nSynthetic history\nPersistent local rules" as Fixture #EFF3F8
 component "Flutter client\nmobile-app branch\nDEMO_MODE=true by default" as Mobile #EFF3F8
 component "FastAPI\nHTTP routing\nRoutes / history / alerts\nCollect / analytics" as API #EFF3F8
 component "Collection service\nProvider adapter inside\nFetch / normalize / store\nThreshold checks" as Collector #EFF3F8

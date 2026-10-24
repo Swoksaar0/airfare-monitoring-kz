@@ -1,54 +1,53 @@
 # Verification and evaluation plan
 
-**Status:** draft plan, 23 October 2026; measurements and acceptance review pending.  
-**Related issue:** [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14)
+**Status:** executed in part and updated 24 October 2026; student acceptance review pending.  
+**Owner:** Bekbauly; reviewer: Dinmukhammed. **Related issue:** [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
 
-## Purpose and evidence rules
+## Purpose and acceptance rules
 
-Demonstrate that the requirements and project aim are met using reproducible checks. Separate code inspection, mocked/offline checks, live-source pilots, deployment verification and user evaluation. A successful HTTP response does not prove a real market fare or a delivered notification.
+Verify the requirements through traceable evidence. A completed test run can contain failed acceptance checks. Use PASS for the tested condition, FAIL for a reproduced violation, PARTIAL for a limited layer, and NOT RUN for missing evidence. A mocked provider, SQLite check or Web demo does not establish live fare coverage, PostgreSQL deployment, native behavior or delivered push.
 
-## Test matrix
+The detailed [results and reproduction commands](VERIFICATION_RESULTS.md), [backend JSON](evidence/backend-results-2026-10-24.json) and [Flutter evidence summary](evidence/flutter-results-2026-10-24.json) identify revisions and conditions. Preserve the evidence from failed checks when a later repair is verified.
 
-| Test | Requirements | Setup and expected result |
+## Requirements and test matrix
+
+| Test | Requirements and expected behavior | Recorded status on 24 October |
 | --- | --- | --- |
-| VT-01 Route initialization | FR-01 | Start with an empty test DB, seed twice; active directions are unique and reverse directions remain distinct. |
-| VT-02 Date input | FR-02/09 | Exercise future, past and malformed dates in prototype/API; invalid input has a clear explanation. |
-| VT-03 Provider outcomes | FR-03/11, NFR-03/04 | Mock success, empty data, timeout and HTTP failure; only real labeled success creates a real quote; errors remain explicit. |
-| VT-04 History isolation | FR-04 | Insert two departure dates for one route; each requested history contains only its date in collection order. |
-| VT-05 Time correctness | FR-05, NFR-01 | Use UTC and +05:00 representations of the same instant, unknown time and future time; ages match and unknown/invalid states are preserved. |
-| VT-06 Observation identity | FR-12 | Import the same source observation twice and then a distinct later observation; only the latter extends independent price history. |
-| VT-07 Assessment baseline | FR-06 | Use hand-calculable prices and sparse/constant histories; values match the declared formula and insufficient data is explicit. |
-| VT-08 Alert input | FR-07, NFR-02 | Check valid rule, missing route, invalid date, negative/NaN price and deactivation; invalid input yields client errors. |
-| VT-09 Alert delivery | FR-08 | Use a fake delivery adapter; crossing the threshold creates one delivery attempt, replay does not, and failure does not become delivered success. |
-| VT-10 UI scenarios | FR-02/04/05/09/10 | Complete route/date → history → tracking and inspect loading, no-data, offline/stale and error states. |
-| VT-11 Access and budget | NFR-03/06 | Unauthorized collection makes zero provider requests; an authorized run remains within its configured request budget; logs contain no credentials. |
-| VT-12 Monetary persistence | NFR-02 | Round-trip decimal amounts and currency; reject invalid values without partial writes. |
-| VT-13 Deployment/reproducibility | NFR-04/05 | Follow setup on a clean environment, confirm DB readiness and read endpoints, record versions and errors. |
-| VT-14 Performance | NFR-07 | Measure p95 history latency for 1,000 observations under a documented local configuration; review the proposed ≤2 s target before acceptance. |
+| VT-01 | FR-01: seed twice; 12 unique directional routes, reverse direction distinct | PASS in disposable SQLite |
+| VT-02 | FR-02/09: future date accepted, past/malformed rejected; invalid collection horizon rejected | PASS for Flutter input and backend horizon; backend alert past-date check fails under VT-08 |
+| VT-03 | FR-03/11, NFR-04: missing token, empty response, timeout and HTTP failure create no market quote | FAIL: all four return an unlabeled generated price; #20 |
+| VT-04 | FR-04: histories isolate route and departure date and sort observations | Backend FAIL: requested date ignored; Flutter mocked filtering PASS; #21 |
+| VT-05 | FR-05, NFR-01: preserve unknowns; equivalent instants agree; future source time flagged | Backend FAIL on three subchecks; Flutter metadata checks PASS; #20 |
+| VT-06 | FR-12: replay does not create an independent source observation | FAIL: two rows for one replayed quote; #21 |
+| VT-07 | FR-06: prior median excludes current; insufficient data explicit | Backend PARTIAL: empty case passes, prior median fails; Flutter prior median PASS; #21 |
+| VT-08 | FR-07: positive threshold and valid route/date; invalid input returns 4xx | Backend FAIL: missing route 500, past date 200; Flutter local rule validation PASS; #22 |
+| VT-09 | FR-08: logged delivery attempt, replay suppression and separate failure outcome | State-update suppression PASS only; real delivery NOT RUN and absent in code |
+| VT-10 | FR-09/10/11: route/date flow, loading, empty/error/stale/single states, persistent local rules/favorites | PASS within Flutter Web/tests; native accessibility and real users NOT RUN |
+| VT-11 | NFR-03/06: unauthorized collection rejected before work; finite request budget | FAIL: unauthenticated call writes 12 rows; authorized budget and secret-log audit NOT RUN; #22 |
+| VT-12 | NFR-02: exact money/currency persistence and invalid values rejected | Backend FAIL: normalizer accepts negative/NaN/infinity; decimal DB migration NOT RUN; client hundredths checks PASS; #20 |
+| VT-13 | NFR-04/05: reproducible setup, rollback and deployed storage/API readiness | PARTIAL: health, syntax, Web build and recorded environments; clean install/PostgreSQL/rollback NOT RUN |
+| VT-14 | NFR-07: provisional history p95 <=2 s for 1,000 observations | Local PASS: p95 42.81 ms, 30 serial ASGI samples after 3 warmups; production acceptance NOT RUN |
 
-## Existing evidence
+## Executed verification
 
-An isolated review of backend commit 5c4d52efb5b6076d9cffc8fbff93e9691a3f360b used Python 3.12.14, disposable SQLite with foreign keys, and mocked HTTP responses. It exercised 12 diagnostic scenarios. Health/routes returned HTTP 200 and initialized 12 directions; no-data analytics returned INSUFFICIENT_DATA.
+Backend revision `4c16b32647e9dc780eec368a4ce20f015986c539` was downloaded from GitHub and checked in an isolated Python 3.12.14 environment on Windows. Sixteen diagnostics completed: **6 PASS and 10 FAIL**. These counts refer to individual subchecks, not fourteen fully accepted requirements. Nine Python files parsed successfully. HTTP providers were mocked, credentials were placeholders, and the temporary SQLite database enabled foreign keys. No external provider requests or attempted external connections occurred.
 
-The same review reproduced unlabeled simulation, departure-as-source-time mapping, discarded time-zone offsets, repeated snapshot rows, mixed-date history and HTTP 500 for an unknown alert route. These are observed defects, not passed acceptance criteria. It did not verify PostgreSQL deployment or live fares. Details are in the main README's backend-review section.
+Flutter revision `d14b0d8ae006b84e34b33470ba1b168849222057` passed **17 tests**, static analysis and a release Web build using Flutter 3.47.5/Dart 3.13.4. Browser checks at 390 by 844 pixels verified route/date selection, history, failure states and restoration of date, favorites and local tracking after reload. A widget check also exercised text scale 1.6. This is limited evidence, not an accessibility compliance finding. The previous 23 October diagnostic review is historical evidence; the results above are the newer check.
 
-## Live-source pilot
+## Reproduction and defect handling
 
-After source-time and real/simulated separation fixes, agree a small request budget and test selected route/date combinations. Record provider, request conditions, collection time, source time if supplied, observed availability, outcome, and raw-response provenance. Repeat on another day for fixed departure dates. Measure returned coverage and distinct observations; missing results are not proof that no flight exists.
+Run the committed offline runner against the exact backend revision using the documented dependencies and commands in VERIFICATION_RESULTS.md. It refuses external socket connections and writes a new JSON report. Expected backend failures are preserved as failures; exit code zero means the diagnostic run completed, not that acceptance passed. Inspect the summary.
 
-## Statistical/ML evaluation
+Fix priorities are #20 source integrity and exact-money validation, #22 collection access and alert validation, then #21 history/identity/baseline consistency. Bekbauly implements backend repairs; Dinmukhammed checks the client contract. Rerun affected tests after each repair and retain the original evidence. Both students review before changing a task to Done. Do not trigger live collection while these gates fail.
 
-The [literature review](LITERATURE_REVIEW.md) explains the rationale: P3 addresses forecast evaluation/leakage, P4 motivates simple comparators, and D1/D2 clarify cached-source limitations. These support the proposed protocol; they do not establish achieved accuracy.
+## Evaluation protocol
 
-- Begin with a last-observed-price or prior-history-median baseline and document its grouping.
-- Compare the linear baseline and any later ML candidate on the same chronological split.
-- Features and baselines use only information available before each assessed observation.
-- Keep repeated cached quotes and synthetic data out of independent train/test examples.
-- Report MAE and the sample count, route/date coverage, collection span and missingness. Do not infer annual seasonality from a short collection period.
-- If data are insufficient, report that limitation and evaluate descriptive functionality instead of fabricating accuracy.
+After data-trust and access repairs, approve a finite pilot budget and a source-specific route/date list. Record collection outcome, source/cache status, request count, collection time, supplied source time, raw-response hash and distinct observation identity. Repeat fixed departure dates on later days; rolling horizons alone do not establish one flight's price trajectory. Missing results do not prove that no flight exists.
 
-## User evaluation and reporting
+For a future price experiment, predict the next daily observation for a fixed route, departure and comparable context. Compare last observed price and prior median with the candidate on the same chronological cases. Fit features and baselines using earlier observations only; exclude synthetic data and replayed cached quotes from independent examples. Report MAE in KZT, sample count, coverage, span, horizons and missingness. Training and measured accuracy remain deferred until real distinct history supports a meaningful split. No minimum number of records alone guarantees suitability.
 
-Before testing, choose 3–5 target-user representatives and a consistent script. Measure scenario completion, time, errors, and understanding of timestamps/assessment; record anonymized feedback. State participant count and conditions. Do not present the planned test as a completed study.
+For usability, recruit 3–5 real participants and use a consistent route/date → history → local rule script. Record completion, errors, elapsed time and understanding of demo/freshness labels; anonymize answers and summarize changes. No participants or supervisor feedback have been supplied, so this study is NOT RUN.
 
-Each result should include test ID, source revision, environment, fixture/source, expected/actual outcome, timestamp, evidence and reviewer. A failed check becomes a tracked issue; only a verified repair changes its status.
+## Outstanding acceptance gates
+
+Remaining checks cover clean setup, PostgreSQL migration/rollback, source limits and permissions, fixed-date live coverage, native Android/iOS behavior, screen-reader and keyboard use, logged push delivery and retry/deduplication failures, and user/supervisor review. Gate the live-data pilot on #20/#21/#22. Gate public deployment on access control and configuration hygiene. Gate notification claims on actual delivery evidence. The checkpoint can present the verified demo and honest limitations while these MVP items remain open.

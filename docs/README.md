@@ -10,7 +10,7 @@ Prepared on 23 October 2026 for the 24 October checkpoint. All documents are dra
 | Proposal and scope | [PROJECT_PROPOSAL.md](PROJECT_PROPOSAL.md) | [#1](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/1) |
 | Functional/non-functional requirements | [REQUIREMENTS.md](REQUIREMENTS.md) | [#4](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/4) |
 | Architecture with current components, ERD and target data flow | [ARCHITECTURE.md](ARCHITECTURE.md) | [#5](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/5), [#12](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/12) |
-| Verification and evaluation plan | [VERIFICATION_PLAN.md](VERIFICATION_PLAN.md) | [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
+| Verification plan and executed outcomes | [VERIFICATION_PLAN.md](VERIFICATION_PLAN.md), [VERIFICATION_RESULTS.md](VERIFICATION_RESULTS.md) | [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
 | Milestones, risks, and dependencies | [PROJECT_PLAN.md](PROJECT_PLAN.md) | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | User discussion protocol and evidence template | [USER_DISCUSSIONS.md](USER_DISCUSSIONS.md) | [#2](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/2) |
 | Primary Flutter/Dart prototype | [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) | [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
@@ -33,3 +33,6 @@ See [BRANCH_WORKFLOW.md](BRANCH_WORKFLOW.md) for ownership and checkout instruct
 - Review the drafts, link artifacts to tasks, provide repository access, and identify the agreed submission revision with `pre-defense-1`.
 
 The review contains attributed literature findings and proposed project inferences. No completed interviews, supervisor approvals, native-device verification, student reading/peer review, or final acceptance are claimed.
+
+
+Verification updated on 24 October: Flutter has 17 passing checks; backend diagnostics record 6 PASS and 10 FAIL. See the linked results for limits and open defects #20–#22.

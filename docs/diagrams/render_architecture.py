@@ -27,7 +27,7 @@ DIAGRAMS = {
   edge('System','Push',[(1170,630),(1270,630),(1270,840),(1380,840)],'Future delivery requests',(1480,675),True),
  ]),
  'components': dict(title='Components present in the repository',size=(1800,1320),note='Solid: dependency exists in code | Dashed: experimental API path, integration unverified',nodes=[
-  node('Fixture','component',(50,70,530,240),['Demo data','Synthetic history','Session-only state']),
+  node('Fixture','component',(50,70,530,240),['Demo data','Synthetic history','Persistent local rules']),
   node('Mobile','component',(680,70,1160,240),['Flutter client','mobile-app branch','DEMO_MODE=true by default']),
   node('API','component',(680,400,1160,590),['FastAPI','HTTP routing','Routes / history / alerts','Collect / analytics']),
   node('Collector','component',(50,700,530,900),['Collection service','Provider adapter inside','Fetch / normalize / store','Threshold checks']),
@@ -139,4 +139,5 @@ def render_all(out):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parent)
     args=parser.parse_args();render_all(args.output);print(f'Rendered {len(DIAGRAMS)} diagrams to {args.output}')
+
 

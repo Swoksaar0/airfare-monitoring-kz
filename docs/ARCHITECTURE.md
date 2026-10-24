@@ -5,7 +5,7 @@
 
 The project uses a Flutter client and a Python/FastAPI backend with SQLAlchemy models and PostgreSQL configuration. The current component view describes dependencies visible in code. The target data-flow view describes the corrections and future integrations needed for reliable monitoring; it is not evidence that those behaviors already work.
 
-The backend was inspected at [4c16b326](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/4c16b32647e9dc780eec368a4ce20f015986c539/backend), and the Flutter client at [dd45060a](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/dd45060a454bc585f3e01af1d40d77daf652024d/mobile). This review did not run collection, contact an airfare provider, deploy PostgreSQL or verify push delivery.
+The backend was inspected at [4c16b326](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/4c16b32647e9dc780eec368a4ce20f015986c539/backend), and the Flutter client at [d14b0d8a](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/d14b0d8ae006b84e34b33470ba1b168849222057/mobile). The 24 October verification uses mocked offline collection and a disposable SQLite database; no provider contact, PostgreSQL deployment or push delivery is established. See VERIFICATION_RESULTS.md.
 
 ## System Context Diagram
 
@@ -21,7 +21,7 @@ The system boundary contains the mobile application and its supporting backend. 
 
 Editable source: [use-cases.puml](diagrams/use-cases.puml).
 
-The diagram describes intended scope: route/date selection (FR-01/02), history and freshness (FR-04/05), assessment (FR-06), threshold tracking (FR-07), future notification receipt (FR-08), and operator collection (FR-03). FR-09 applies to loading, missing and error states. The Flutter demo already implements part of these scenarios; a production date selector and delivered push notifications remain outstanding.
+The diagram describes intended scope: route/date selection (FR-01/02), history and freshness (FR-04/05), assessment (FR-06), threshold tracking (FR-07), future notification receipt (FR-08), and operator collection (FR-03). FR-09 applies to loading, missing and error states. The Flutter demo already implements part of these scenarios; a future-date selector and persistent local rules are now implemented; delivered push and native validation remain outstanding.
 
 ## Current Component Diagram
 
@@ -34,7 +34,7 @@ Solid arrows identify dependencies present in source code, not successful produc
 | Component | Responsibility | Current state |
 | --- | --- | --- |
 | Flutter client and ApiService | Present routes, history, assessment and threshold feedback | In `mobile-app`; `DEMO_MODE=true` uses fixtures. HTTP methods exist for API mode; end-to-end integration remains unverified. |
-| Demo fixtures and session state | Supply synthetic history and retain local favorites/thresholds | In client code and memory; not a server database or an airfare source. |
+| Demo fixtures and local preferences | Supply synthetic route/date history; persist date, favorites and rules | SharedPreferences on the device/browser, with demo/API scopes separated; no server alert creation. |
 | FastAPI endpoints | Route HTTP requests, validate payloads and obtain a DB session | `backend/app/main.py`; calls collector and analytics functions, and queries/writes ORM models. |
 | Collection service and provider adapter | Request cached quotes, normalize, add snapshots and check rules | `services/collector.py`; the adapter function is inside this service. Fallback and timestamp defects remain. |
 | Analytics service | Read history for a route/departure and calculate an assessment | `services/analytics.py`; median and linear baseline, with no validated forecast accuracy. |
@@ -70,7 +70,7 @@ The target flow requires code changes and migrations. Its outcome records, sourc
 
 The current endpoints are `GET /health`, `GET /api/v1/routes`, `POST /api/v1/collect`, `GET /api/v1/routes/{route_id}/history`, `GET /api/v1/routes/{route_id}/analytics`, and `POST /api/v1/alerts`.
 
-History currently filters by route and optionally `is_fresh`, but lacks a server-side departure-date filter. Analytics accepts a departure date; the Flutter HTTP method does not currently pass a selected date. The client filters downloaded history to the analytics date, which does not replace the missing API filter or a real date selector.
+History currently filters by route and optionally `is_fresh`, but lacks a server-side departure-date filter. Analytics accepts a departure date. The updated Flutter HTTP method passes the selected date and filters returned route/date records locally; the backend still ignores that date on history requests. This client safeguard does not replace the missing server filter.
 
 Before production integration: remove silent simulated fallback from real collection; preserve unknown metadata and correct timestamp semantics; add explicit source/offer identities and currency context; validate returned route/date; authorize collection; validate alert routes and support deactivation. Keep credentials in server configuration. The scheduler should use bounded sequential work and explicit quota/error handling, rather than unbounded automatic retries.
 
@@ -99,4 +99,5 @@ python docs/diagrams/render_architecture.py --output docs/diagrams
 ```
 
 This regenerates SVG previews, PNG images for the report and matching `.puml` sources. It makes no network or collection requests. Diagram edges show component dependencies or the explicitly labeled target flow; they do not assert deployed services or measured success.
+
 

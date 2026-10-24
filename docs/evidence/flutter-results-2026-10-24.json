@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-24",
+  "branch": "mobile-app",
+  "commit": "d14b0d8ae006b84e34b33470ba1b168849222057",
+  "flutter": "3.47.5",
+  "dart": "3.13.4",
+  "tests_passed": 17,
+  "analysis": "no issues",
+  "web_build": "passed",
+  "browser_viewport": "390x844",
+  "page_reload_preferences": "verified",
+  "airline_provider_requests": 0,
+  "native_builds_verified": false,
+  "push_delivery_implemented": false,
+  "evidence_kind": "Summary of checks performed during the 24 October Flutter update; not a fresh full rerun",
+  "screenshots": [
+    "https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/screenshots/routes.jpg",
+    "https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/screenshots/history.jpg"
+  ]
+}

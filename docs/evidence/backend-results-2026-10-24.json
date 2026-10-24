@@ -1,0 +1,210 @@
+{
+  "executed_at": "2026-10-24T10:18:47.300506+00:00",
+  "source_commit": "4c16b32647e9dc780eec368a4ce20f015986c539",
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "dependencies": {
+    "fastapi": "0.161.1",
+    "sqlalchemy": "2.1.6",
+    "httpx": "0.28.1",
+    "pydantic": "2.14.1",
+    "pydantic-settings": "2.16.1"
+  },
+  "environment": "Disposable SQLite with foreign keys; in-process ASGI; mocked provider HTTP",
+  "source_sha256": {
+    "app\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app\\config.py": "1bbee86a32467b6dbc115e819393cf6b2e096a1ba16b5df38c468321665a97f1",
+    "app\\database.py": "be20a2997eda66db0f2e1b2b5c091524f30802c85a555e2127f2dc4cbb8e6a33",
+    "app\\main.py": "5ce233948e812c2cc03a59a1e4aca68bd99dfff59fdfb0dfda2e874b1b7154a7",
+    "app\\models.py": "5c1b6b4e4ca0ee96cffe5f12db94f992b25de995cf7fb6e111e278bd879fdb8b",
+    "app\\schemas.py": "31a00a28dd120ab7261d0463d883c14a3c35a88ffb9d419ca2e9e32ee07dd077",
+    "app\\services\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app\\services\\analytics.py": "4c78e38b8004f4c0607a67a3caa33cb51939f09feb913c247b87ffb45f1892b2",
+    "app\\services\\collector.py": "46c7b7881ccc63a6de0fbaf4f2422bd9b1f95d8f5b8c7f818c9bec5eb5563529"
+  },
+  "provider_requests": 0,
+  "network_connection_attempts_blocked": 0,
+  "checks": [
+    {
+      "id": "VT-01",
+      "name": "Unique idempotent route seed",
+      "status": "PASS",
+      "expected": "12 unique directional routes; second seed adds zero",
+      "actual": {
+        "routes": 12,
+        "added_on_second_seed": 0
+      }
+    },
+    {
+      "id": "VT-13a",
+      "name": "Health endpoint",
+      "status": "PASS",
+      "expected": "HTTP 200",
+      "actual": 200
+    },
+    {
+      "id": "VT-07a",
+      "name": "Empty analytics",
+      "status": "PASS",
+      "expected": "INSUFFICIENT_DATA",
+      "actual": "INSUFFICIENT_DATA"
+    },
+    {
+      "id": "VT-02a",
+      "name": "Collection horizon validation",
+      "status": "PASS",
+      "expected": "HTTP 422 for -1, 0, 61",
+      "actual": [
+        422,
+        422,
+        422
+      ]
+    },
+    {
+      "id": "VT-03",
+      "name": "Missing and failed provider responses",
+      "status": "FAIL",
+      "expected": "No market quote for missing token, empty response, timeout or HTTP error",
+      "actual": {
+        "missing_token": {
+          "price_returned": true,
+          "synthetic_label": null
+        },
+        "empty": {
+          "price_returned": true,
+          "synthetic_label": null
+        },
+        "timeout": {
+          "price_returned": true,
+          "synthetic_label": null
+        },
+        "http_error": {
+          "price_returned": true,
+          "synthetic_label": null
+        }
+      }
+    },
+    {
+      "id": "VT-05a",
+      "name": "Departure is not source observation time",
+      "status": "FAIL",
+      "expected": "Unknown source observation time remains unknown",
+      "actual": {
+        "found_at_equals_departure": true
+      }
+    },
+    {
+      "id": "VT-05b",
+      "name": "Equivalent UTC and offset timestamps",
+      "status": "FAIL",
+      "expected": "Equal instants and both stale at age 50 h with 48 h limit",
+      "actual": {
+        "utc": "2026-10-22 08:18:48.152651",
+        "offset": "2026-10-22 13:18:48.152651",
+        "offset_is_fresh": true,
+        "limit_hours": 48
+      }
+    },
+    {
+      "id": "VT-05c",
+      "name": "Unknown and future source metadata",
+      "status": "FAIL",
+      "expected": "Unknown time retained; future source time invalid",
+      "actual": {
+        "unknown_time_invented": true,
+        "unknown_airline": "KC",
+        "future_is_fresh": true
+      }
+    },
+    {
+      "id": "VT-11",
+      "name": "Operator authorization",
+      "status": "FAIL",
+      "expected": "401/403 before collection",
+      "actual": {
+        "status": 200,
+        "snapshots_saved": 12
+      }
+    },
+    {
+      "id": "VT-08",
+      "name": "Alert input validation",
+      "status": "FAIL",
+      "expected": "Valid accepted; negative/past rejected; missing route is client error",
+      "actual": {
+        "valid": 200,
+        "negative": 422,
+        "missing_route": 500,
+        "past_date": 200
+      }
+    },
+    {
+      "id": "VT-06",
+      "name": "Replayed source observation",
+      "status": "FAIL",
+      "expected": "1 independent quote after replay",
+      "actual": {
+        "stored_rows": 2
+      }
+    },
+    {
+      "id": "VT-09a",
+      "name": "Repeated threshold state update suppression",
+      "status": "PASS",
+      "expected": "First run 1 state update, replay 0; delivery is not tested",
+      "actual": {
+        "first": 1,
+        "replay": 0
+      }
+    },
+    {
+      "id": "VT-04",
+      "name": "History departure-date isolation",
+      "status": "FAIL",
+      "expected": "Only requested departure date",
+      "actual": [
+        "2026-10-31",
+        "2026-11-01"
+      ]
+    },
+    {
+      "id": "VT-07b",
+      "name": "Prior median excludes current",
+      "status": "FAIL",
+      "expected": "Prior median 10000 for [10000, current 20000]",
+      "actual": 15000.0
+    },
+    {
+      "id": "VT-12a",
+      "name": "Reject invalid quote money",
+      "status": "FAIL",
+      "expected": "Negative, NaN and infinity rejected before persistence",
+      "actual": {
+        "accepted": [
+          "-1",
+          "nan",
+          "inf"
+        ]
+      }
+    },
+    {
+      "id": "VT-14-local",
+      "name": "Local history latency characterization",
+      "status": "PASS",
+      "expected": "Provisional p95 <=2000 ms; SQLite/ASGI only, not production acceptance",
+      "actual": {
+        "samples": 30,
+        "warmup": 3,
+        "rows": 1000,
+        "concurrent_clients": 1,
+        "p95_ms": 42.81,
+        "median_ms": 14.15
+      }
+    }
+  ],
+  "syntax_files_passed": 9,
+  "summary": {
+    "PASS": 6,
+    "FAIL": 10
+  }
+}

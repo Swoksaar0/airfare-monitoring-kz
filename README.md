@@ -93,11 +93,11 @@ Source availability and coverage must be verified experimentally. Having a route
 
 ## Implementation status
 
-Status reflects the published backend inspected on **23 October 2026**.
+Status includes the published backend diagnostics and Flutter verification recorded on **24 October 2026**.
 
 | Component | Status | Evidence or limitation |
 | --- | --- | --- |
-| Repository and task backlog | Present | 16 assigned issues with expected outcomes, deadlines, and acceptance criteria |
+| Repository and task backlog | Present | 16 original assigned tasks plus 3 assigned backend defect tasks, with evidence and acceptance criteria |
 | PostgreSQL configuration | Present in code | Docker Compose defines PostgreSQL 16; actual deployment is not established by the configuration alone |
 | Database models | Implemented prototype | `Route`, `PriceSnapshot`, and `PriceAlert` |
 | FastAPI endpoints | Implemented prototype | Health, routes, collection, history, analytics, and alert-rule creation |
@@ -109,7 +109,7 @@ Status reflects the published backend inspected on **23 October 2026**.
 | Scheduled collection | Not implemented | Collection is invoked through an API endpoint |
 | SCAT parser integration | Not present in this repository | The published collector does not call a SCAT parser |
 | Mobile application and clickable prototype | Flutter demo available; native builds/integration unverified | [Flutter source, tests and launch instructions](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); earlier HTML sketch retained as a visual reference |
-| Automated tests and CI | Two Flutter checks available; backend regression suite/CI pending | [Flutter checks](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); backend diagnostic review below |
+| Automated tests and CI | 17 Flutter tests pass; offline backend diagnostics published; CI pending | [Flutter checks](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md); backend diagnostic review below |
 | Requirements, research, and architecture documents | Drafts available | See the documentation index; student/supervisor review and real user evidence remain pending |
 
 ## Data-source limitations that affect the current prototype
@@ -164,7 +164,7 @@ Stored fallback values are not verified live prices. Updating alert fields does 
 
 ```mermaid
 flowchart TB
-    Mobile["Flutter client in mobile-app"] -->|"default demo mode"| Fixtures["Synthetic fixtures / session state"]
+    Mobile["Flutter client in mobile-app"] -->|"default demo mode"| Fixtures["Synthetic fixtures / local preferences"]
     Mobile -.->|"experimental HTTP mode"| API["FastAPI"]
     Operator["Operator"] -->|"manual POST /collect"| API
     API --> Collector["Collector with internal provider adapter"]
@@ -230,7 +230,7 @@ airfare-monitoring-kz/
 
 At the time of review, `.gitignore` is empty and `backend/.env` is tracked. Configuration hygiene needs an update: provide an `.env.example`, ignore local `.env` files and virtual environments, and keep real credentials out of Git history.
 
-The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The Flutter/Dart client, Web launcher and `mobile/test/` checks are kept in the separate [mobile-app branch](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app/mobile). Backend automated tests and native platform launch folders remain outstanding.
+The `docs/` directory contains checkpoint drafts, editable diagram sources, readable SVG exports, evidence templates, and a browser-based clickable mobile-interface prototype. They require peer/supervisor review. The Flutter/Dart client, Web launcher and `mobile/test/` checks are kept in the separate [mobile-app branch](https://github.com/Swoksaar0/airfare-monitoring-kz/tree/mobile-app/mobile). The offline backend diagnostic runner is published under docs/evidence; a maintained regression suite and native platform launch folders remain outstanding.
 
 ## Running the backend locally
 
@@ -318,7 +318,7 @@ The history response currently omits `flight_number`, although the database mode
 
 ## Verification and testing
 
-There is no committed backend automated test suite or CI workflow yet; the Flutter prototype has two checks documented in [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
+A reproducible offline backend diagnostic runner and results are published under docs/evidence on pre-defense-documents; a maintained backend regression suite and CI remain pending. The Flutter prototype has 17 passing tests documented in [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md). Implementing the verification plan is tracked in [issue #14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14).
 
 ### Backend review performed on 23 October 2026
 
@@ -341,7 +341,7 @@ Nine Python files passed syntax parsing. Twelve diagnostic scenarios were exerci
 | Route history | Observations for two departure dates were returned together; flight number was absent from the response |
 | Historical median | Prior price 10,000 and current price 20,000 produced median 15,000, showing inclusion of the current observation |
 
-The review did not establish PostgreSQL deployment, real provider access, live price coverage, push delivery, or mobile behavior. The diagnostic runner is not part of the published test suite. A committed regression suite remains an engineering task.
+The review did not establish PostgreSQL deployment, real provider access, live price coverage, push delivery, or mobile behavior. The original review is historical; the updated 24 October runner and results are now published with the documentation. A maintained backend regression suite remains an engineering task.
 
 ### Read-only smoke checks
 
@@ -441,3 +441,8 @@ Before submission, review the exact revision and create the required `pre-defens
 4. Add input validation, controlled collection access, automated tests, and reproducible dependencies.
 5. Publish the mandatory documents, diagrams, and clickable prototype.
 6. Implement and evaluate the mobile client and actual notification delivery.
+
+
+## Verification update recorded on 24 October 2026
+
+The Flutter Web prototype passed 17 tests, static analysis and a release build. Offline backend diagnostics completed with 6 passed and 10 failed conditions; no provider requests were made. The source-integrity, history and access/validation repairs are tracked in #20, #21 and #22, assigned to Bekbauly. [Recorded results](docs/VERIFICATION_RESULTS.md) include revisions, reproducible conditions and evidence; [project management and risks](docs/PROJECT_PLAN.md) contains owners, dependencies, qualitative risk scores and release gates. User discussions, peer review and supervisor feedback remain pending.
