@@ -1,5 +1,7 @@
 # First pre-defense documentation
 
+**Submission snapshot:** `prob-period-1`; the matching backend, mobile source and Word report are included in this same tag. See [SUBMISSION.md](../SUBMISSION.md).
+
 Prepared on 23 October 2026 for the 24 October checkpoint. All documents are drafts for review by both students and the supervisor. A document being present does not mean that its acceptance criteria or review have been completed.
 
 | Material | File | Related issue |
@@ -13,7 +15,7 @@ Prepared on 23 October 2026 for the 24 October checkpoint. All documents are dra
 | Verification plan and executed outcomes | [VERIFICATION_PLAN.md](VERIFICATION_PLAN.md), [VERIFICATION_RESULTS.md](VERIFICATION_RESULTS.md) | [#14](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/14) |
 | Milestones, risks, and dependencies | [PROJECT_PLAN.md](PROJECT_PLAN.md) | [#8](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/8) |
 | User discussion protocol and evidence template | [USER_DISCUSSIONS.md](USER_DISCUSSIONS.md) | [#2](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/2) |
-| Primary Flutter/Dart prototype | [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/mobile-app/mobile/README.md) | [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
+| Primary Flutter/Dart prototype | [mobile/README.md](https://github.com/Swoksaar0/airfare-monitoring-kz/blob/prob-period-1/mobile/README.md) | [#6](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/6) |
 | Supervisor feedback record template | [SUPERVISOR_FEEDBACK.md](SUPERVISOR_FEEDBACK.md) | [#15](https://github.com/Swoksaar0/airfare-monitoring-kz/issues/15) |
 
 Architecture diagrams were corrected against GitHub source snapshots on 24 October 2026. See [ARCHITECTURE.md](ARCHITECTURE.md) for the current/target distinction and reproducible diagram sources.

@@ -1,0 +1,32 @@
+{
+  "tag": "prob-period-1",
+  "submission_date": "2026-10-24",
+  "timezone": "Asia/Qyzylorda",
+  "source_commits": {
+    "main": "4c16b32647e9dc780eec368a4ce20f015986c539",
+    "mobile-app": "d14b0d8ae006b84e34b33470ba1b168849222057",
+    "pre-defense-documents": "ce8977e2afe1e7009047e4b19c04d2840d74b672"
+  },
+  "backend_tree_sha": "fbd3dbd96a3fc0983486a1f8a2bb60425f10319e",
+  "mobile_source_tree_sha": "db38be4c3389bd1163405f0651a23c7c9871cafd",
+  "documentation_source_tree_sha": "e46e7e929a467562c31ccdfbe8f0dd3a66350611",
+  "packaging_changes": [
+    "Root/module README links and tag launch instructions",
+    "SUBMISSION.md and submission/manifest.json",
+    "Unmodified checked Word report included"
+  ],
+  "report": {
+    "path": "submission/Airfare_Monitoring_KZ_Probationary_Period_1.docx",
+    "sha256": "d3c84e9a002e2698552e4ea50b476c5a2578c15dac525e7cbeec33cd248bb627",
+    "pages": 48,
+    "byte_identical_to_previously_checked_report": true
+  },
+  "verification": {
+    "flutter_tests_passed": 17,
+    "backend_diagnostic_conditions_passed": 6,
+    "backend_diagnostic_conditions_failed": 10,
+    "external_provider_requests_during_checks": 0,
+    "new_runtime_tests_during_packaging": false
+  },
+  "review_status": "Technical checkpoint snapshot; user discussions, student peer review and supervisor feedback remain unverified"
+}
