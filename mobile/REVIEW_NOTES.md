@@ -1,32 +1,39 @@
-# Review of the supplied Flutter prototype
+# Flutter prototype review and completion notes
 
-Reviewed 23 October 2026 from the user-supplied `kz-flights-monitor.zip`. Only the mobile client was adapted; the ZIP and published backend were not overwritten.
+Updated 24 October 2026. The source started from the user-supplied archive and the reviewed GitHub client at `dd45060a`. Work in this revision affects the Flutter client only.
 
-## Findings in the original archive
+## Corrections retained from the first review
 
-- `Icons.ConnectingAirports` did not compile. The correct icon is `Icons.connecting_airports`.
-- The archive lacked platform launch folders. A Web launcher was generated for this review. Android SDK was not found, so native Android was not built or tested.
-- API failures silently turned into generated routes/history/prices. Demo analytics always named ALA→NQZ even for other route IDs.
-- An alert request exception returned success, and the UI claimed a notification had been sent although no delivery adapter existed.
-- There were six fallback routes while the navigation label claimed twelve.
-- Route/detail loading had no error state or mounted checks; the text controller was not disposed.
-- Favorites and threshold/deduplication maps were session memory, despite dependencies suggesting persistent storage.
+The earlier archive had a non-compiling icon, missing platform launchers, silent generated-price fallback on API failures, incorrect direction metadata, false notification-success messaging and incomplete request lifecycle handling. The first review introduced a Web launcher and explicit demo/API separation.
 
-## Adaptations in this copy
+## Changes in version 0.2.0
 
-- Fixed the compilation error and generated a minimal Web launcher.
-- Added an explicit default `DEMO_MODE=true` and a persistent visible synthetic-data banner. This mode makes no airfare/backend requests; API errors in API mode do not fall back to demo data.
-- Added twelve candidate directions and matching route metadata. The demo departure is fixed at 2026-11-06, with five synthetic observations on 19–23 October.
-- Removed the invented linear estimate, retained unknown carrier metadata and did not mark synthetic prices fresh. The prior-history median is 25,000 KZT for the four earlier fixture points.
-- Alert success requires an actual successful response in API mode. No common fake device token is supplied. The UI distinguishes a local demo threshold from server saving and never claims push delivery.
-- Added bounded request timeouts, failure feedback, mounted checks, controller disposal, finite-price validation and save-button disabling.
-- Limited displayed history to the analytics departure date and sorted it by observation time. Added a textual observation list alongside the simple graph.
-- Replaced the unsupported tenge glyph in this Web environment with KZT. Enabled Web semantics for assistive technologies.
+- Added a Russian future-date picker and shortcuts; the selected date propagates to details and is restored after restart.
+- Replaced session-only favorites and alert maps with a single serialized preference model. Writes are queued, and memory state is published only after a successful store write.
+- Keyed local rules by directional airport pair and departure date. Amounts are stored as integer hundredths of KZT; input is validated before conversion.
+- Added a dedicated tracking tab with persisted edit, activation/deactivation and removal.
+- Kept demo and API preference scopes separate. There is no server-alert creation or device registration in this revision.
+- Added independently selectable empty, failed, stale and single-observation demo states. Reload generations prevent an older in-flight response from replacing a newer date's result.
+- Added source/collection-time labels, unknown metadata, future-source-time detection and a 48-hour age warning for the displayed observations.
+- Changed descriptive analysis to exclude the current observation from the historical median. No linear forecast is generated for the demonstration.
+- Chart x positions use actual observation instants, not equally spaced list indexes. Exact values and interactive point selection are provided in the text list.
+- API history requests carry the selected date; local filtering preserves route/date grouping while the server contract is incomplete.
+- Removed unused `fl_chart` and the old session-only alert/favorite helper files. Added localization and adaptive icon assets.
 
-## Verification and remaining limitations
+## Verification boundaries
 
-Flutter 3.47.5 / Dart 3.13.4: static analysis and two tests were used. Web release build and browser checks are recorded in the README. No provider request, real quote, backend deployment, native mobile build or push delivery is established by these checks.
+Seventeen deterministic tests passed on Flutter 3.47.5 / Dart 3.13.4. Static analysis was clean and the release Web build succeeded. HTTP tests use a mock client; the demo test checks that no HTTP request occurs.
 
-The fixture repeats the same artificial price series for each route; it is for interface review, not analysis or ML. The departure date is fixed and no date picker or individual-flight/fare inventory is implemented. Favorites and local thresholds are lost on restart. The old alert helper is only in-memory decision logic, not delivery infrastructure or persistent deduplication. Baggage, notifications and real source provenance still need implementation. Dependencies `fl_chart` and `shared_preferences` are present in the archive but not used by these screens.
+Browser checks at 390 × 844 exercised real preference restoration after a page reload, date selection, favorites, graph inspection, threshold saving/deactivation, and no-data/error presentation. Widget tests also exercise a 1.6 text scale. Browser screenshots are demonstration evidence, not interviews, native-device results or a usability study.
 
-The Web build reported an optional CupertinoIcons font warning; this did not prevent the checked Material screens from rendering. iOS and Android remain unverified. The existing backend has separately documented source-time and simulation defects; API mode is not a validated real-fare path.
+## Remaining work
+
+- Fix backend simulation fallback, provenance, time semantics, exact money and server-side route/departure filtering before trusting API-mode data.
+- Define a stable provider offer identity and comparable fare group; do not claim complete flight, tariff or baggage coverage.
+- Add server-side rule management, authentication/device registration, scheduling, delivery attempts and durable notification deduplication.
+- Generate/review native platform launchers, configure Android/iOS toolchains and test on real devices.
+- Perform user discussions, supervisor review and an assistive-technology audit. No measured forecasting accuracy is claimed.
+
+The default demo is sufficient to walk through the selected checkpoint scenarios. It does not finish live collection or production notifications.
+
+

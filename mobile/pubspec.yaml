@@ -1,17 +1,19 @@
 name: kz_flights_mobile
-description: "Мобильное приложение для мониторинга и анализа динамики минимальных цен на авиабилеты по внутренним маршрутам Казахстана"
+description: "Flutter prototype for monitoring airfare observations in Kazakhstan"
 publish_to: 'none'
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   http: ^1.2.0
-  fl_chart: ^0.68.0
   shared_preferences: ^2.2.2
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+
